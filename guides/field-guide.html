@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Saturday Board (V3)</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Public+Sans:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --paper: #FBF8F1; --paper-raised: #FFFFFF; --ink: #28231B; --ink-soft: #6B6154; --line: #E4DCCC;
+    --note-yellow: #F5CE52; --note-yellow-edge: #D9AF2B; --note-pink: #EFA8BA; --note-pink-edge: #D57D95;
+    --note-orange: #F0A45B; --note-orange-edge: #CD7F2F; --ink-on-orange: #3F2508; --water: #54788C;
+    --water-soft: #E3ECF1; --cork: #A87F52; --ink-on-note: #3A3012; --ink-on-pink: #4A2530;
+  }
+  :root:not([data-theme="light"]) { @media (prefers-color-scheme: dark) {
+    --paper: #211D17; --paper-raised: #2B261E; --ink: #EFE8DA; --ink-soft: #A99C88; --line: #3D362B;
+    --note-yellow: #E8C24A; --note-yellow-edge: #B18F1F; --note-pink: #D98BA0; --note-pink-edge: #A85870;
+    --note-orange: #DE9550; --note-orange-edge: #A96A24; --ink-on-orange: #351E06; --water: #7FA5BA;
+    --water-soft: #2B3841; --cork: #B08D62; --ink-on-note: #33290D; --ink-on-pink: #401E29;
+  } }
+  :root[data-theme="dark"] {
+    --paper: #211D17; --paper-raised: #2B261E; --ink: #EFE8DA; --ink-soft: #A99C88; --line: #3D362B;
+    --note-yellow: #E8C24A; --note-yellow-edge: #B18F1F; --note-pink: #D98BA0; --note-pink-edge: #A85870;
+    --note-orange: #DE9550; --note-orange-edge: #A96A24; --ink-on-orange: #351E06; --water: #7FA5BA;
+    --water-soft: #2B3841; --cork: #B08D62; --ink-on-note: #33290D; --ink-on-pink: #401E29;
+  }
+  body { background: var(--paper); color: var(--ink); font-family: "Public Sans", "Segoe UI", system-ui, sans-serif; font-size: 1.0625rem; line-height: 1.65; margin: 0; }
+  .page { max-width: 46rem; margin: 0 auto; padding: 3.5rem 1.5rem 5rem; }
+  h1, h2, h3 { font-family: "Fraunces", Georgia, serif; text-wrap: balance; line-height: 1.15; }
+  h1 { font-size: clamp(2.4rem, 6vw, 3.4rem); font-weight: 700; margin: 0.4rem 0 0.6rem; }
+  h2 { font-size: 1.7rem; font-weight: 600; margin: 3rem 0 0.9rem; }
+  h3 { font-size: 1.2rem; font-weight: 600; margin: 1.8rem 0 0.5rem; }
+  p { margin: 0 0 1rem; }
+  .kicker { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--water); margin: 0; }
+  .standfirst { font-family: "Fraunces", Georgia, serif; font-size: 1.3rem; color: var(--ink-soft); margin: 0 0 2rem; line-height: 1.45; text-wrap: balance; }
+  .lede { font-size: 1.125rem; }
+  hr { border: 0; border-top: 1px solid var(--line); margin: 2.6rem 0; }
+  .chip { display: inline-block; padding: 0.05rem 0.5rem 0.13rem; border-radius: 2px; font-weight: 600; font-size: 0.92em; white-space: nowrap; }
+  .chip.yellow { background: var(--note-yellow); color: var(--ink-on-note); box-shadow: 0 1px 0 var(--note-yellow-edge); }
+  .chip.pink { background: var(--note-pink); color: var(--ink-on-pink); box-shadow: 0 1px 0 var(--note-pink-edge); }
+  .chip.orange { background: var(--note-orange); color: var(--ink-on-orange); box-shadow: 0 1px 0 var(--note-orange-edge); }
+  figure { margin: 2rem 0; }
+  figure svg { display: block; width: 100%; height: auto; }
+  figcaption { font-size: 0.85rem; color: var(--ink-soft); margin-top: 0.6rem; text-align: center; }
+  .zones { display: grid; gap: 0.9rem; padding: 0; margin: 1.4rem 0; list-style: none; }
+  .zones li { background: var(--paper-raised); border: 1px solid var(--line); border-radius: 6px; padding: 0.9rem 1.1rem; }
+  .zones .zname { font-family: "Fraunces", Georgia, serif; font-weight: 600; font-size: 1.08rem; }
+  .step { display: grid; grid-template-columns: 2.6rem 1fr; gap: 0 1.1rem; margin: 1.9rem 0; }
+  .stepnum { font-family: "Fraunces", Georgia, serif; font-weight: 700; font-size: 1.9rem; color: var(--cork); line-height: 1.1; text-align: right; }
+  .step h3 { margin: 0 0 0.4rem; grid-column: 2; }
+  .step .stime { font-family: "IBM Plex Mono", Consolas, monospace; font-size: 0.78rem; color: var(--ink-soft); font-weight: 400; margin-left: 0.5rem; white-space: nowrap; }
+  .step > div { grid-column: 2; }
+  .step p:last-child { margin-bottom: 0; }
+  .aside { border-left: 3px solid var(--water); background: var(--water-soft); padding: 0.8rem 1.1rem; border-radius: 0 6px 6px 0; margin: 1.4rem 0; }
+  .aside p { margin: 0; } .aside p + p { margin-top: 0.6rem; }
+  .layout { background: var(--paper-raised); border: 1px solid var(--line); border-radius: 6px; padding: 1rem 1.2rem; margin: 1.4rem 0; }
+  .layout ul { margin: 0.4rem 0 0; padding-left: 1.1rem; }
+  .tablewrap { overflow-x: auto; margin: 1.4rem 0; }
+  table { border-collapse: collapse; width: 100%; font-size: 0.98rem; }
+  th, td { text-align: left; padding: 0.55rem 0.9rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-soft); font-weight: 700; }
+  .whys { padding-left: 1.1rem; } .whys li { margin: 0 0 0.8rem; }
+  ul, ol { margin: 0 0 1rem; } li { margin-bottom: 0.35rem; }
+  .close { font-family: "Fraunces", Georgia, serif; font-size: 1.35rem; text-align: center; margin: 3rem 0 0; text-wrap: balance; }
+  strong { font-weight: 700; }
+  @media (max-width: 480px) { .step { grid-template-columns: 1.9rem 1fr; } .stepnum { font-size: 1.5rem; } }
+  @media print { body { background: #fff; color: #111; font-size: 10.5pt; } .page { padding: 0.4in 0.5in; max-width: 100%; } h2 { break-after: avoid; } .step, .zones li, figure { break-inside: avoid; } }
+</style>
+</head>
+<body>
+<div class="page">
+  <p class="kicker">A Saturday experiment · runs every market day · V3</p>
+  <h1>The Saturday Board</h1>
+  <p class="standfirst">Can a market crowd out-think the capitol?</p>
+
+  <p class="lede">Every Saturday we put up a board at the farmers market and ask one real question — an issue the
+  capitol has already debated and voted on, though we don't say which way the vote went. Over the day, one visitor at
+  a time spends about five minutes at the board. Nobody runs the discussion. Nobody is in charge of the answer. By
+  closing time the board has settled on one, and we compare it with what the politicians chose.</p>
+
+  <p>No single visitor solves the problem. The <em>board</em> solves it. Each person adds a little, trims a little, and
+  moves on; the answer grows out of many small, honest contributions. That only works if everyone follows the same
+  short procedure — so the procedure below matters, <strong>including its order</strong>.</p>
+
+  <h2>The board</h2>
+
+  <figure aria-label="Diagram of the V3 board: two strips of stacked notes, letter cards, a gap, and the archive">
+    <svg viewBox="0 0 760 380" role="img">
+      <rect x="8" y="8" width="744" height="336" rx="8" fill="none" stroke="var(--cork)" stroke-width="6"/>
+      <rect x="28" y="26" width="104" height="42" rx="3" fill="var(--paper-raised)" stroke="var(--line)" stroke-width="1.5"/>
+      <text x="80" y="44" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="10.5" font-weight="700" letter-spacing="1.2" fill="var(--ink-soft)">ISSUE CARD</text>
+      <text x="80" y="59" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="9" fill="var(--ink-soft)">one paragraph, no options</text>
+
+      <rect x="28" y="84" width="704" height="92" rx="4" fill="none" stroke="var(--line)" stroke-width="1.5"/>
+      <text x="40" y="104" font-family="'Public Sans',sans-serif" font-size="12.5" font-weight="700" letter-spacing="1.5" fill="var(--ink-soft)">WALL OF WHY</text>
+      <text x="40" y="121" font-family="'IBM Plex Mono',monospace" font-size="9.5" fill="var(--ink-soft)">pink · one stack per pain</text>
+      <text x="40" y="134" font-family="'IBM Plex Mono',monospace" font-size="9.5" fill="var(--ink-soft)">number = how many share it</text>
+      <text x="40" y="147" font-family="'IBM Plex Mono',monospace" font-size="9.5" fill="var(--ink-soft)">never taken down</text>
+      <g font-family="'IBM Plex Mono',monospace" font-size="10" font-weight="500" fill="var(--ink-on-pink)">
+        <g transform="translate(190 112)"><rect x="5" y="5" width="44" height="40" fill="var(--note-pink)" stroke="var(--note-pink-edge)" stroke-width="0.8"/><rect x="2.5" y="2.5" width="44" height="40" fill="var(--note-pink)" stroke="var(--note-pink-edge)" stroke-width="0.8"/><rect width="44" height="40" fill="var(--note-pink)" stroke="var(--note-pink-edge)" stroke-width="0.8"/><text x="40" y="12" text-anchor="end">3</text></g>
+        <g transform="translate(252 112)"><rect width="44" height="40" fill="var(--note-pink)" stroke="var(--note-pink-edge)" stroke-width="0.8"/><text x="40" y="12" text-anchor="end">1</text></g>
+        <g transform="translate(314 112)"><rect x="5" y="5" width="44" height="40" fill="var(--note-pink)" stroke="var(--note-pink-edge)" stroke-width="0.8"/><rect x="2.5" y="2.5" width="44" height="40" fill="var(--note-pink)" stroke="var(--note-pink-edge)" stroke-width="0.8"/><rect width="44" height="40" fill="var(--note-pink)" stroke="var(--note-pink-edge)" stroke-width="0.8"/><text x="40" y="12" text-anchor="end">7</text></g>
+        <g transform="translate(376 112)"><rect x="2.5" y="2.5" width="44" height="40" fill="var(--note-pink)" stroke="var(--note-pink-edge)" stroke-width="0.8"/><rect width="44" height="40" fill="var(--note-pink)" stroke="var(--note-pink-edge)" stroke-width="0.8"/><text x="40" y="12" text-anchor="end">2</text></g>
+        <g transform="translate(438 112)"><rect width="44" height="40" fill="var(--note-pink)" stroke="var(--note-pink-edge)" stroke-width="0.8"/><text x="40" y="12" text-anchor="end">1</text></g>
+        <g transform="translate(500 112)"><rect x="5" y="5" width="44" height="40" fill="var(--note-pink)" stroke="var(--note-pink-edge)" stroke-width="0.8"/><rect x="2.5" y="2.5" width="44" height="40" fill="var(--note-pink)" stroke="var(--note-pink-edge)" stroke-width="0.8"/><rect width="44" height="40" fill="var(--note-pink)" stroke="var(--note-pink-edge)" stroke-width="0.8"/><text x="40" y="12" text-anchor="end">4</text></g>
+        <g transform="translate(562 112)"><rect width="44" height="40" fill="var(--note-pink)" stroke="var(--note-pink-edge)" stroke-width="0.8"/><text x="40" y="12" text-anchor="end">1</text></g>
+        <g transform="translate(624 112)"><rect x="2.5" y="2.5" width="44" height="40" fill="var(--note-pink)" stroke="var(--note-pink-edge)" stroke-width="0.8"/><rect width="44" height="40" fill="var(--note-pink)" stroke="var(--note-pink-edge)" stroke-width="0.8"/><text x="40" y="12" text-anchor="end">2</text></g>
+      </g>
+
+      <rect x="28" y="192" width="604" height="126" rx="4" fill="none" stroke="var(--line)" stroke-width="1.5"/>
+      <text x="40" y="212" font-family="'Public Sans',sans-serif" font-size="12.5" font-weight="700" letter-spacing="1.5" fill="var(--ink-soft)">THE FIELD</text>
+      <text x="40" y="229" font-family="'IBM Plex Mono',monospace" font-size="9.5" fill="var(--ink-soft)">one stack per idea</text>
+      <text x="40" y="242" font-family="'IBM Plex Mono',monospace" font-size="9.5" fill="var(--ink-soft)">top note = current wording</text>
+      <text x="40" y="255" font-family="'IBM Plex Mono',monospace" font-size="9.5" fill="var(--ink-soft)">number = how much is built on it</text>
+      <text x="40" y="268" font-family="'IBM Plex Mono',monospace" font-size="9.5" fill="var(--ink-soft)">neighbours = similar ideas</text>
+      <g font-family="'IBM Plex Mono',monospace" font-size="10" font-weight="500">
+        <g transform="translate(190 222)"><rect x="5" y="5" width="44" height="40" fill="var(--note-yellow)" stroke="var(--note-yellow-edge)" stroke-width="0.8"/><rect x="2.5" y="2.5" width="44" height="40" fill="var(--note-orange)" stroke="var(--note-orange-edge)" stroke-width="0.8"/><rect width="44" height="40" fill="var(--note-yellow)" stroke="var(--note-yellow-edge)" stroke-width="0.8"/><text x="40" y="12" text-anchor="end" fill="var(--ink-on-note)">5</text></g>
+        <g transform="translate(250 222)"><rect x="5" y="5" width="44" height="40" fill="var(--note-yellow)" stroke="var(--note-yellow-edge)" stroke-width="0.8"/><rect x="2.5" y="2.5" width="44" height="40" fill="var(--note-yellow)" stroke="var(--note-yellow-edge)" stroke-width="0.8"/><rect width="44" height="40" fill="var(--note-orange)" stroke="var(--note-orange-edge)" stroke-width="0.8"/><text x="40" y="12" text-anchor="end" fill="var(--ink-on-orange)">9</text></g>
+        <g transform="translate(310 222)"><rect x="2.5" y="2.5" width="44" height="40" fill="var(--note-yellow)" stroke="var(--note-yellow-edge)" stroke-width="0.8"/><rect width="44" height="40" fill="var(--note-yellow)" stroke="var(--note-yellow-edge)" stroke-width="0.8"/><text x="40" y="12" text-anchor="end" fill="var(--ink-on-note)">2</text><text x="40" y="36" text-anchor="end" fill="var(--ink-on-note)">||</text></g>
+        <g transform="translate(370 222)"><rect x="5" y="5" width="44" height="40" fill="var(--note-yellow)" stroke="var(--note-yellow-edge)" stroke-width="0.8"/><rect x="2.5" y="2.5" width="44" height="40" fill="var(--note-orange)" stroke="var(--note-orange-edge)" stroke-width="0.8"/><rect width="44" height="40" fill="var(--note-orange)" stroke="var(--note-orange-edge)" stroke-width="0.8"/><text x="40" y="12" text-anchor="end" fill="var(--ink-on-orange)">12</text></g>
+        <g transform="translate(430 222)"><rect x="2.5" y="2.5" width="44" height="40" fill="var(--note-orange)" stroke="var(--note-orange-edge)" stroke-width="0.8"/><rect width="44" height="40" fill="var(--note-yellow)" stroke="var(--note-yellow-edge)" stroke-width="0.8"/><text x="40" y="12" text-anchor="end" fill="var(--ink-on-note)">3</text></g>
+        <line x1="497" y1="222" x2="497" y2="262" stroke="var(--cork)" stroke-width="1.2" stroke-dasharray="4 3"/>
+        <text x="497" y="276" text-anchor="middle" font-size="9" fill="var(--cork)">gap</text>
+        <g transform="translate(520 222)"><rect width="44" height="40" fill="var(--note-yellow)" stroke="var(--note-yellow-edge)" stroke-width="0.8"/><text x="40" y="12" text-anchor="end" fill="var(--ink-on-note)">1</text><text x="40" y="36" text-anchor="end" fill="var(--ink-on-note)">|</text></g>
+        <g transform="translate(580 222)"><rect x="2.5" y="2.5" width="44" height="40" fill="var(--note-yellow)" stroke="var(--note-yellow-edge)" stroke-width="0.8"/><rect width="44" height="40" fill="var(--note-orange)" stroke="var(--note-orange-edge)" stroke-width="0.8"/><text x="40" y="12" text-anchor="end" fill="var(--ink-on-orange)">4</text></g>
+      </g>
+      <g font-family="'IBM Plex Mono',monospace" font-size="9.5" fill="var(--ink-soft)" text-anchor="middle">
+        <g><rect x="202" y="276" width="20" height="15" rx="2" fill="var(--paper-raised)" stroke="var(--line)"/><text x="212" y="287">A</text></g>
+        <g><rect x="262" y="276" width="20" height="15" rx="2" fill="var(--paper-raised)" stroke="var(--line)"/><text x="272" y="287">B</text></g>
+        <g><rect x="322" y="276" width="20" height="15" rx="2" fill="var(--paper-raised)" stroke="var(--line)"/><text x="332" y="287">C</text></g>
+        <g><rect x="382" y="276" width="20" height="15" rx="2" fill="var(--paper-raised)" stroke="var(--line)"/><text x="392" y="287">D</text></g>
+        <g><rect x="442" y="276" width="20" height="15" rx="2" fill="var(--paper-raised)" stroke="var(--line)"/><text x="452" y="287">E</text></g>
+        <g><rect x="532" y="276" width="20" height="15" rx="2" fill="var(--paper-raised)" stroke="var(--line)"/><text x="542" y="287">F</text></g>
+        <g><rect x="592" y="276" width="20" height="15" rx="2" fill="var(--paper-raised)" stroke="var(--line)"/><text x="602" y="287">G</text></g>
+      </g>
+      <text x="330" y="308" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="9.5" fill="var(--ink-soft)">neighbourhood of D = 2 + 12 + 3 = 17 · neighbourhood of B = 5 + 9 + 2 = 16</text>
+
+      <rect x="646" y="192" width="86" height="126" rx="4" fill="none" stroke="var(--line)" stroke-width="1.5"/>
+      <text x="689" y="212" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="12.5" font-weight="700" letter-spacing="1.5" fill="var(--ink-soft)">ARCHIVE</text>
+      <rect x="660" y="248" width="58" height="44" fill="none" stroke="var(--cork)" stroke-width="2.5"/>
+      <path d="M 660 248 L 668 234 L 726 234 L 718 248" fill="none" stroke="var(--cork)" stroke-width="2.5" stroke-linejoin="round"/>
+      <rect x="670" y="262" width="36" height="26" fill="var(--note-yellow)" opacity="0.5" transform="rotate(-6 688 275)"/>
+      <text x="689" y="308" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="9.5" fill="var(--ink-soft)">+ logbook</text>
+
+      <text x="380" y="366" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="12" fill="var(--ink-soft)">top note = current wording · number = height of the stack · | = a stroke · letter = the stack's name · gap = a different kind of answer</text>
+    </svg>
+    <figcaption>The board at mid-afternoon. Stack D is tallest, but the answer is read by <em>neighbourhood</em>:
+    D with its neighbours C and E scores 17; B with A and C scores 16. Stack F stands alone beyond a gap and counts only itself.</figcaption>
+  </figure>
+
+  <p>Two long strips, one above the other, each a row of <strong>stacks</strong> of sticky notes. New notes go
+  <strong>on top of</strong> old ones, covering them, so a stack only ever takes up the space of one note however tall
+  it grows. The number in the top corner of each top note says how tall the stack is underneath it.</p>
+
+  <ul class="zones">
+    <li><span class="zname">The Wall of Why</span> — <span class="chip pink">pink stacks</span>, upper strip — where it hurts.
+      Every visitor's personal stake in the issue lives here. One stack per distinct pain; the number on top is how many
+      people have said it. This is the problem, told by the people who have it. Nothing pink is ever taken down.</li>
+    <li><span class="zname">The Field</span> — <span class="chip yellow">yellow</span> &amp; <span class="chip orange">orange stacks</span>, lower strip — the ideas.
+      One stack per idea; the top note is the idea's current wording, and the number on top is how much the crowd has built
+      on it. Stacks that are close in meaning sit <strong>next to each other</strong>; a <strong>hand's-width gap</strong>
+      between stacks means "these are different kinds of answer, not versions of one." Position along the strip carries
+      no rank — there is no good end and no bad end.</li>
+    <li><span class="zname">The Archive</span> — a box, with a logbook. Notes the crowd has taken down. Nothing is ever
+      binned or torn up: a lifted note goes in the box and gets a line in the log — what it said, which stack it came off, and when.</li>
+  </ul>
+
+  <div class="layout">
+    <strong>Board layout.</strong> Stack positions are about 10 cm apart (a 76 mm note plus a finger's width), so a 2.4 m
+    board holds about 22 stacks per strip. Practical points:
+    <ul>
+      <li>The Wall of Why runs along the upper strip, the Field along the lower. Each Field stack has a small
+        <strong>letter card</strong> (A, B, C …) pinned just under it — that is the stack's name in the log.</li>
+      <li>Height is the stack itself. Nothing on the board ever moves up, down, or sideways — a note only ever goes
+        <em>on top</em> of a stack or <em>beside</em> one.</li>
+      <li>Need more room? Add a second board <em>to the right</em>, never a second row: neighbours must be neighbours
+        along one line.</li>
+      <li>The Archive box and the steward stand at the right-hand end of the Field. The issue card hangs where visitors
+        arrive, before they can see the Field.</li>
+    </ul>
+  </div>
+
+  <p><strong>Materials:</strong> pink, yellow and orange sticky notes; fine-tip markers; a timer; the steward's logbook;
+  small letter cards (A, B, C …) to label stacks; a hand stamp; and the issue card — one paragraph stating this week's
+  question neutrally, with no options listed.</p>
+
+  <hr>
+
+  <h2>One visit — six steps, in this order</h2>
+  <p>A visit takes about five minutes. The order is not decoration; the method fails if the steps are shuffled — above
+  all, if you read the Field before you have written your own idea.</p>
+
+  <div class="step">
+    <div class="stepnum">1</div>
+    <h3>Say where it hurts <span class="stime">pink · ~45 s</span></h3>
+    <div>
+      <p>The steward reads the issue card aloud. You write one pink note: how does this issue touch your life? What
+      does it cost you, or someone you know?</p>
+      <p>Then look at the Wall of Why — the top note of each pink stack. If one already says your pain, put yours
+      <strong>on top of it</strong> and write the stack's number plus one in the corner. If none does, start a new stack
+      and write <strong>1</strong>.</p>
+      <p><em>Don't look at the Field yet.</em></p>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="stepnum">2</div>
+    <h3>First instinct <span class="stime">yellow · ~60 s</span></h3>
+    <div>
+      <p>Before you've read a single idea from anyone else, write your gut answer to the question. Half-formed is fine.
+      Obvious is fine. There is no wrong answer at this step — a "bad" idea still teaches the board something, and the
+      board will sort it out later.</p>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="stepnum">3</div>
+    <h3>Post it <span class="stime">~15 s</span></h3>
+    <div>
+      <p>Now look at the Field for the first time — but your note is already finished. <strong>Post it exactly as
+      written: no edits, no rewrites, not a word</strong>, even if you spot a note you like better than your own. Every
+      yellow note on the board is a first instinct; that is the point.</p>
+      <p>Where it goes is a filing question, not a debate, and it is <em>yours</em> to answer:</p>
+      <ul>
+        <li>If a stack's top note says what yours says, put yours <strong>on top of it</strong> and write the stack's
+          number plus one in the corner.</li>
+        <li>If nothing says it, start a new stack: <strong>1</strong> in the corner. Put it <strong>beside the stack it
+          is most like</strong>. If it isn't like anything on the board, leave a hand's-width gap.</li>
+      </ul>
+      <p>Nobody chooses their own stack's standing. A stack grows because <em>other</em> people build on it, never
+      because its author did.</p>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="stepnum">4</div>
+    <h3>Read <span class="stime">~75 s</span></h3>
+    <div>
+      <p>Read the top note of every stack on both strips, with the number in its corner. That is the whole board as it
+      stands: every pain and how many share it, every idea in its current wording and how much the crowd has built on it.</p>
+      <p>You don't need to dig into the stacks. What's underneath is history, and it is in the numbers.</p>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="stepnum">5</div>
+    <h3>Add <span class="stime">orange &amp; pink · ~60 s · both optional</span></h3>
+    <div>
+      <p>Two things you <em>may</em> add, one of each:</p>
+      <ul>
+        <li><strong>One orange note.</strong> If someone else's idea makes you think "almost — but I'd say it like this,"
+          write your version. Then either put it <strong>on top of their stack</strong> (a rewording or refinement — the
+          stack's number plus one), or, if it is a real variation, start a <strong>new stack right beside theirs</strong>
+          (number 1). Any stack is fair game, not just the tall ones. Judge with the Wall of Why: is your version better
+          for pains that aren't yours?</li>
+        <li><strong>One more pink note</strong> — but only for a pain that is <strong>not on the wall yet</strong>. It
+          starts a new pink stack at 1. If your pain is already up there, it has your number in step 1 and that is enough.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="stepnum">6</div>
+    <h3>Trim <span class="stime">~45 s</span></h3>
+    <div>
+      <p>You have <strong>three strokes</strong>. A stroke is a tally mark in the bottom corner of a <strong>top note in
+      the Field</strong> — the note you can see, never one underneath. Put a stroke on a note if that idea, as currently
+      worded, would make what is written on the Wall of Why worse.</p>
+      <p>Limits: no strokes on a stack you have added to today; no more than two strokes on one note; pink never gets
+      strokes.</p>
+      <p><strong>Three strokes and it comes off.</strong> If your stroke is the third, lift the note and hand it to the
+      steward for the Archive. The note underneath is now the top: taking a note off rejects <em>that wording</em>, not
+      the idea. An idea is gone only when its stack is empty.</p>
+      <p>Judge with the pink wall, not just your own taste. The question for every stroke is: <em>would this idea
+      actually add to what's written on the Wall of Why — including the pains that aren't mine?</em></p>
+    </div>
+  </div>
+
+  <div class="aside">
+    <p><strong>If others are at the stall: the table.</strong> When two or three visitors are at the board at once, after
+    everyone has finished step 6 they may talk for two minutes about what's on the board — then each may place
+    <strong>one</strong> extra stroke. Talk comes after the individual steps, never before: the board wants your own
+    instinct first and your considered judgement second, not an echo of the loudest voice.</p>
+  </div>
+
+  <hr>
+
+  <h2>The steward</h2>
+  <p>The steward keeps the board tidy and never touches the answer:</p>
+  <ul>
+    <li><strong>Never</strong> suggests an idea, hints, files a note for anyone, or places a stroke. Ever. If a visitor
+      can't decide where a note goes, the steward says "it's your call" — and means it.</li>
+    <li>Reads the issue card, keeps time, hands out notes, stamps hands (one visit per person per Saturday).</li>
+    <li>Gives each new stack its letter card.</li>
+    <li><strong>Slides stacks along the strip to make room</strong> — keeping their order, and keeping the gaps. Never
+      reorders them, never merges two stacks, never splits one, never moves a note from one stack to another.</li>
+    <li>Takes lifted notes into the Archive and writes the log line.</li>
+    <li>Once an hour, fills in the logbook tally: new yellow notes, new orange notes (on-top and beside, separately),
+      new pink stacks, strokes placed, notes lifted, number of stacks, and the leading neighbourhood.</li>
+  </ul>
+
+  <hr>
+
+  <h2>Reading the answer</h2>
+  <p>At closing time, for every stack in the Field, add up <strong>its number plus the numbers of the stacks immediately
+  to its left and right</strong> — not across a gap. That total is the stack's <strong>neighbourhood</strong>. The biggest
+  neighbourhood wins. Its middle stack's top note is the headline; the neighbours are the answer's family of variations —
+  read them together as one position. The steward reads the numbers out loud so anyone can check.</p>
+  <p>Note what the rule is <em>not</em>: the answer is not simply the tallest stack. A tall stack standing alone — one
+  nobody could rephrase or vary and still agree with — loses to a stack of the same height with living neighbours. An
+  answer the whole market can live with beats an answer one group loves.</p>
+  <p><strong>Settling early:</strong> if the leading neighbourhood has not changed for a full hour, the board is done —
+  it can be read out before closing time.</p>
+
+  <h2>The scoreboard</h2>
+  <p>Each week, record three things side by side:</p>
+  <div class="tablewrap"><table>
+    <tr><th>The board's answer</th><td>the winning neighbourhood, headline and family</td></tr>
+    <tr><th>The capitol's answer</th><td>what was actually voted, revealed only at close</td></tr>
+    <tr><th>What happened since</th><td>how the real decision worked out, where known</td></tr>
+  </table></div>
+  <p>Over the weeks, that table is the experiment: a running answer to whether an open crowd, five minutes at a time,
+  finds better answers than the people elected to find them.</p>
+
+  <hr>
+
+  <h2>Why the odd rules? <span style="font-weight:400; font-size:0.8em; color:var(--ink-soft);">(the short version)</span></h2>
+  <ul class="whys">
+    <li><strong>Instinct before reading</strong> keeps each idea independent. If people read first, the board stops
+      hearing a hundred minds and starts hearing its own echo. It is also the only way a <em>genuinely different
+      kind</em> of answer ever gets onto the board: nobody reaches it by rewording what's already there.</li>
+    <li><strong>Pain before ideas</strong> because nobody can judge solutions to a problem they haven't heard. The pink
+      wall is the problem statement, written by the people who own it — and the reason a visitor can trim an idea for a
+      harm they will never personally feel.</li>
+    <li><strong>On top, never at the bottom</strong> because an idea's standing should be the amount the crowd has built
+      on it, and nothing else. There is no climbing and no voting. To lift an idea you have to <em>add</em> to it.</li>
+    <li><strong>Read only the tops</strong> because that is all anyone can honestly read in five minutes, and a small
+      read that is actually done beats a big read that is faked. The numbers carry the history.</li>
+    <li><strong>Three strokes, two per person</strong> so that no visitor — however confident — can take anything down
+      alone. The board's opinion is only allowed to change a little at a time.</li>
+    <li><strong>Lifting reveals</strong> because rejecting a wording should not destroy the idea under it. Only a stack
+      that has been trimmed to nothing is gone.</li>
+    <li><strong>Neighbours count</strong> because how many <em>near-agreements</em> an idea collects is information.
+      Ideas that survive being slightly rephrased are the ones worth trusting; the gap rule stops unrelated ideas
+      borrowing each other's weight.</li>
+    <li><strong>The Archive, never the bin</strong> because knowing what the crowd let go — and when — is part of the
+      answer. Nothing stops the next visitor writing the same idea again as their own first instinct.</li>
+  </ul>
+
+  <p class="close">That's the whole method. Put up the board, hold the order, trust the crowd.</p>
+</div>
+</body>
+</html>

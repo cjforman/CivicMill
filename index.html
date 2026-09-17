@@ -2,11 +2,106 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>CivicMill</title>
-<meta http-equiv="refresh" content="0; url=CivicMillBoard.html">
-<link rel="canonical" href="CivicMillBoard.html">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CivicMill — the Saturday Board</title>
+<meta name="description" content="A public deliberation board run by Sortition USA: a noticeboard, coloured sticky notes, and a real decision from the Wisconsin Capitol put to passers-by.">
+<style>
+  :root{--ink:#1a1a1f;--soft:#5d5d68;--line:#d7d2c6;--paper:#fdfcf8;
+        --red:#c0392b;--wash:#f5f2ea}
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{background:var(--wash);color:var(--ink);
+    font:16.5px/1.65 "Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif}
+  .sheet{max-width:52rem;margin:0 auto;background:var(--paper);
+    padding:56px 60px 72px;box-shadow:0 2px 24px rgba(40,36,28,.12)}
+  header{display:flex;align-items:center;justify-content:space-between;gap:26px;margin:0 0 22px}
+  header img{max-height:75px;max-width:45%;width:auto;height:auto;display:block}
+  h1{margin:0;font-size:52px;line-height:1;letter-spacing:-.015em}
+  .kicker{margin-top:9px;font:600 15px/1 ui-sans-serif,system-ui,sans-serif;
+    text-transform:uppercase;letter-spacing:.08em;color:var(--soft)}
+  h2{font-size:23px;line-height:1.25;margin:40px 0 12px;padding-top:16px;border-top:1px solid var(--line)}
+  p{margin:0 0 15px}
+  a{color:inherit;text-decoration-color:var(--red);text-underline-offset:2px}
+  .lead{font-size:18.5px}
+  .tool{display:block;margin:26px 0 8px;padding:18px 22px;border-left:5px solid var(--red);
+    background:var(--wash);text-decoration:none}
+  .tool b{display:block;font-size:20px}
+  .tool span{font:14.5px/1.5 ui-sans-serif,system-ui,sans-serif;color:var(--soft)}
+  .tool:hover b{text-decoration:underline;text-decoration-color:var(--red)}
+  ul.docs{list-style:none;margin:0;padding:0;font:15px/1.5 ui-sans-serif,system-ui,sans-serif}
+  ul.docs li{display:flex;justify-content:space-between;gap:16px;padding:11px 0;border-bottom:1px solid var(--line)}
+  ul.docs li:last-child{border-bottom:0}
+  .what{min-width:0}
+  .what b{display:block;font-weight:650}
+  .what span{color:var(--soft)}
+  .fmt{flex:0 0 auto;white-space:nowrap}
+  .fmt a{margin-left:12px}
+  footer{margin-top:44px;padding-top:16px;border-top:1px solid var(--line);
+    font:13.5px/1.55 ui-sans-serif,system-ui,sans-serif;color:var(--soft)}
+  @media (max-width:720px){
+    .sheet{padding:32px 16px 52px}
+    header{flex-direction:column-reverse;align-items:flex-start;gap:14px}
+    header img{max-width:70%}
+    h1{font-size:38px}
+    ul.docs li{flex-direction:column;gap:4px}
+    .fmt{white-space:normal}
+    .fmt a{margin:0 14px 0 0}
+  }
+</style>
 </head>
 <body>
-<p><a href="CivicMillBoard.html">Open the CivicMill Board</a></p>
+<div class="sheet">
+  <header>
+    <div>
+      <h1>CivicMill</h1>
+      <div class="kicker">The Saturday Board</div>
+    </div>
+    <img src="assets/sortition-usa-logo.png" alt="Sortition USA">
+  </header>
+
+  <p class="lead">A noticeboard, a lot of coloured sticky notes, and a real
+  decision from the Wisconsin State Capitol, put to whoever walks past the
+  stall at the Dane County Farmers' Market in Madison.</p>
+
+  <p>Visitors say what worries them about the question, write down their
+  first idea, file it beside the ideas most like it, and trim the ones they
+  think would make other people's problems worse. By the end of the day the
+  board settles on an answer, and we compare it with what the Capitol
+  actually did.</p>
+
+  <a class="tool" href="CivicMillBoard.html">
+    <b>Open the CivicMill Board →</b>
+    <span>Turn a photograph of a finished board into data you can score and share. Runs in your browser; nothing to install.</span>
+  </a>
+
+  <h2>Run a board</h2>
+  <ul class="docs">
+    <li><div class="what"><b>Field guide</b><span>The board, the visit step by step, and how the answer is read.</span></div>
+      <div class="fmt"><a href="guides/field-guide.html">Read</a><a href="guides/field-guide.pdf">PDF</a></div></li>
+    <li><div class="what"><b>Steward's guide</b><span>What to say, what to watch, and what to mark.</span></div>
+      <div class="fmt"><a href="guides/stewards-guide.html">Read</a><a href="guides/stewards-guide.pdf">PDF</a></div></li>
+    <li><div class="what"><b>Steward's log</b><span>The printable tally sheets for the day.</span></div>
+      <div class="fmt"><a href="guides/stewards-log.html">Open</a><a href="guides/stewards-log.pdf">PDF</a></div></li>
+  </ul>
+
+  <h2>The questions</h2>
+  <ul class="docs">
+    <li><div class="what"><b>The Madison Docket</b><span>Nine decisions from the Wisconsin Capitol, as the issue cards visitors are given. Each background brief is published after its Saturday.</span></div>
+      <div class="fmt"><a href="dockets/madison/madison-docket.html">Read</a><a href="dockets/madison/madison-docket.pdf">PDF</a></div></li>
+  </ul>
+
+  <h2>Boards we have run</h2>
+  <ul class="docs">
+    <li><div class="what"><b>The Foxconn Decision</b><span>Saturday 5 September 2026 · Capitol Square, Madison</span></div>
+      <div class="fmt"><a href="events/2026-09-05-madison-foxconn/report.html">Report</a><a href="events/2026-09-05-madison-foxconn/report.pdf">PDF</a><a href="events/2026-09-05-madison-foxconn/brief.html">Brief</a><a href="https://github.com/cjforman/CivicMill/tree/main/events/2026-09-05-madison-foxconn">Data</a></div></li>
+  </ul>
+
+  <footer>
+    A project of <a href="https://sortitionusa.org/">Sortition USA</a>.
+    The board tool and scripts are MIT-licensed; the guides, reports, photographs and board data are
+    <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+    Source on <a href="https://github.com/cjforman/CivicMill">GitHub</a>.
+  </footer>
+</div>
 </body>
 </html>

@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Steward's Log (V3)</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Public+Sans:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --paper: #FBF8F1; --paper-raised: #FFFFFF; --ink: #28231B; --ink-soft: #6B6154; --line: #E4DCCC; --line-strong: #C9BEA5;
+    --accent: #54788C; --accent-soft: #E3ECF1; --cork: #A87F52; --cork-soft: #F0E6D6;
+    --pinkish: #FBE9EE; --yellowish: #FDF3D3; --orangeish: #FCE8D4; --greyish: #EFEBE3;
+  }
+  :root:not([data-theme="light"]) { @media (prefers-color-scheme: dark) {
+    --paper: #211D17; --paper-raised: #2B261E; --ink: #EFE8DA; --ink-soft: #A99C88; --line: #3D362B; --line-strong: #554936;
+    --accent: #7FA5BA; --accent-soft: #2B3841; --cork: #C09A6A; --cork-soft: #362E21;
+    --pinkish: #3A2A2F; --yellowish: #3A3322; --orangeish: #3B2E22; --greyish: #2E2A24;
+  } }
+  :root[data-theme="dark"] {
+    --paper: #211D17; --paper-raised: #2B261E; --ink: #EFE8DA; --ink-soft: #A99C88; --line: #3D362B; --line-strong: #554936;
+    --accent: #7FA5BA; --accent-soft: #2B3841; --cork: #C09A6A; --cork-soft: #362E21;
+    --pinkish: #3A2A2F; --yellowish: #3A3322; --orangeish: #3B2E22; --greyish: #2E2A24;
+  }
+  * { box-sizing: border-box; }
+  body { background: var(--paper); color: var(--ink); font-family: "Public Sans", "Segoe UI", system-ui, sans-serif; font-size: 0.96rem; line-height: 1.5; margin: 0; }
+  .page { max-width: 68rem; margin: 0 auto; padding: 2.2rem 1.5rem 4rem; }
+  h1, h2 { font-family: "Fraunces", Georgia, serif; text-wrap: balance; line-height: 1.15; }
+  h1 { font-size: clamp(1.9rem, 5vw, 2.5rem); font-weight: 700; margin: 0.3rem 0 0.2rem; }
+  h2 { font-size: 1.2rem; font-weight: 600; margin: 0 0 0.6rem; }
+  .kicker { font-size: 0.74rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cork); margin: 0; }
+  .standfirst { color: var(--ink-soft); margin: 0 0 1.5rem; font-size: 0.95rem; }
+  p { margin: 0 0 0.6rem; }
+  .headfields { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.9rem; background: var(--paper-raised); border: 1px solid var(--line); border-radius: 10px; padding: 1rem 1.2rem; margin: 0 0 1.6rem; }
+  .headfields .wide { grid-column: 1 / -1; }
+  .field label { display: block; font-size: 0.66rem; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 0.3rem; }
+  .fillrule { border: none; border-bottom: 1.4px solid var(--line-strong); background: transparent; height: 1.5rem; display: block; width: 100%; }
+  section { margin: 2rem 0; }
+  .sec-eyebrow { font-family: "IBM Plex Mono", monospace; font-size: 0.72rem; color: var(--accent); letter-spacing: 0.06em; margin: 0 0 0.15rem; }
+  .hint { border-left: 3px solid var(--accent); background: var(--accent-soft); padding: 0.55rem 0.9rem; border-radius: 0 6px 6px 0; font-size: 0.85rem; margin: 0 0 0.8rem; }
+  .hint p { margin: 0; }
+  .tablewrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 8px; background: var(--paper-raised); }
+  table { border-collapse: collapse; width: 100%; font-size: 0.82rem; min-width: 640px; }
+  th, td { border-bottom: 1px solid var(--line); border-right: 1px solid var(--line); padding: 0.32rem 0.42rem; text-align: left; vertical-align: top; }
+  th:last-child, td:last-child { border-right: none; }
+  tr:last-child td { border-bottom: none; }
+  th { font-size: 0.64rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-soft); font-weight: 700; background: var(--paper); white-space: nowrap; }
+  th.pk, td.pk { background: var(--pinkish); } th.yl, td.yl { background: var(--yellowish); } th.or, td.or { background: var(--orangeish); } th.gy, td.gy { background: var(--greyish); }
+  th.grp { text-align: center; border-bottom: 1px solid var(--line-strong); }
+  td.blank { height: 1.75rem; }
+  td.num { font-family: "IBM Plex Mono", monospace; }
+  td.boxes { font-family: "IBM Plex Mono", monospace; white-space: nowrap; font-size: 0.86rem; letter-spacing: 0.04em; }
+  .rowlabel { font-family: "IBM Plex Mono", monospace; color: var(--ink-soft); white-space: nowrap; }
+  .free { min-width: 130px; }
+  .wide { min-width: 220px; }
+  .totals-row td { font-weight: 700; background: var(--cork-soft); }
+  /* the gate chart */
+  table.gates { min-width: 1180px; }
+  table.gates td { height: 3.4rem; }
+  table.gates td.gate { min-width: 5.2rem; }
+  table.gates td.small { min-width: 3.2rem; }
+  table.gates td.obs { min-width: 9rem; }
+  .checkline { display: flex; align-items: baseline; gap: 0.5rem; margin: 0.35rem 0; }
+  .checkbox { display: inline-block; width: 0.95rem; height: 0.95rem; border: 1.4px solid var(--ink-soft); border-radius: 2px; flex: none; transform: translateY(2px); }
+  .twocol { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; }
+  @media (max-width: 640px) { .twocol { grid-template-columns: 1fr; } .headfields { grid-template-columns: 1fr 1fr; } }
+  .closeblock { background: var(--paper-raised); border: 1px solid var(--line); border-radius: 10px; padding: 1.1rem 1.3rem; }
+  .closeblock .field { margin-bottom: 0.9rem; } .closeblock .field:last-child { margin-bottom: 0; }
+  .signoff { display: grid; grid-template-columns: 2fr 1fr; gap: 1.2rem; margin-top: 1.6rem; }
+  .provenance { font-size: 0.78rem; color: var(--ink-soft); border-top: 1px solid var(--line); margin-top: 2.4rem; padding-top: 0.9rem; }
+  a { color: var(--accent); }
+  .legend { font-size: 0.8rem; color: var(--ink-soft); margin: 0.4rem 0 0; }
+  .legend code { font-family: "IBM Plex Mono", monospace; font-size: 0.85em; }
+  .gatekey { font-family: "IBM Plex Mono", monospace; font-size: 0.95rem; letter-spacing: 0.08em; }
+  @media print {
+    @page { size: landscape; margin: 0.35in; }
+    body { font-size: 9pt; background: #fff !important; color: #111 !important; }
+    .page { padding: 0; max-width: 100%; }
+    .hint, .headfields, .tablewrap, .closeblock { background: #fff !important; border-color: #888 !important; }
+    th, td.pk, td.yl, td.or, td.gy { background: #f4f4f4 !important; } .totals-row td { background: #eee !important; }
+    section.pagebreak { break-before: page; }
+    a { color: #111; text-decoration: none; }
+    table { min-width: 0; } table.gates { min-width: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <p class="kicker">CivicMill · The Saturday Board · V3</p>
+  <h1>Steward's Log</h1>
+  <p class="standfirst">One set per market day. Fill the header before opening; a gate stroke on the tally chart for every event as it
+  happens; move down a row on the hour; score at close. Sections are numbered to match the
+  <a href="stewards-guide.html">steward's guide</a>. Print landscape.</p>
+
+  <p class="sec-eyebrow">00 — Header</p>
+  <div class="headfields">
+    <div class="field"><label>Date</label><span class="fillrule"></span></div>
+    <div class="field"><label>Steward</label><span class="fillrule"></span></div>
+    <div class="field"><label>Opened</label><span class="fillrule"></span></div>
+    <div class="field"><label>Closed</label><span class="fillrule"></span></div>
+    <div class="field wide"><label>This week's issue (see the Madison Docket)</label><span class="fillrule"></span></div>
+    <div class="field wide"><label>Issue card, exact wording as read aloud</label><span class="fillrule"></span><span class="fillrule" style="margin-top:0.5rem;"></span></div>
+    <div class="field"><label>Stroke budget per visitor</label><span class="fillrule"></span></div>
+    <div class="field"><label>Strokes to lift a note</label><span class="fillrule"></span></div>
+    <div class="field"><label>Read time (s)</label><span class="fillrule"></span></div>
+    <div class="field"><label>Boards in use</label><span class="fillrule"></span></div>
+    <div class="field wide"><label>Changes from last week's rules, and why</label><span class="fillrule"></span></div>
+  </div>
+
+  <section>
+    <p class="sec-eyebrow">01 — Tally Chart</p>
+    <h2>One gate stroke per event, in the column for what just happened</h2>
+    <div class="hint"><p>Five-bar gates: <span class="gatekey">| || ||| |||| ~~||||~~</span> — four uprights, the fifth across. Make the
+    stroke <strong>at the moment</strong>, on the current row; never from memory at the end of a visit. The first two hours are split into
+    half-hours because the board changes fastest early. On the hour (or half-hour): count the Field stacks, find the leader, write both
+    in the last two columns, and move down a row.</p></div>
+    <div class="tablewrap">
+      <table class="gates">
+        <thead>
+          <tr>
+            <th rowspan="2">Row</th><th rowspan="2">Time</th><th rowspan="2">Visitors</th>
+            <th class="grp pk" colspan="2">Pink · step 1</th>
+            <th class="grp yl" colspan="3">Yellow · step 3</th>
+            <th class="grp or" colspan="2">Orange · step 5</th>
+            <th class="grp pk" rowspan="2">2nd pink<br>step 5</th>
+            <th class="grp gy" colspan="2">Strokes · step 6</th>
+            <th class="grp gy" rowspan="2">Lifts</th>
+            <th class="grp gy" rowspan="2">No<br>strokes</th>
+            <th rowspan="2">Stacks<br>now</th><th rowspan="2">Leader<br>letter · total</th><th rowspan="2" class="free">Observations</th>
+          </tr>
+          <tr>
+            <th class="pk">on top</th><th class="pk">new</th>
+            <th class="yl">on top</th><th class="yl">new</th><th class="yl">new-gap</th>
+            <th class="or">on top</th><th class="or">beside</th>
+            <th class="gy">own</th><th class="gy">table</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="rowlabel">1a</td><td class="blank num small"></td><td class="gate"></td><td class="gate pk"></td><td class="gate pk"></td><td class="gate yl"></td><td class="gate yl"></td><td class="gate yl"></td><td class="gate or"></td><td class="gate or"></td><td class="gate pk"></td><td class="gate gy"></td><td class="gate gy"></td><td class="gate gy"></td><td class="gate gy"></td><td class="blank num small"></td><td class="blank num small"></td><td class="obs"></td></tr>
+          <tr><td class="rowlabel">1b</td><td class="blank num small"></td><td class="gate"></td><td class="gate pk"></td><td class="gate pk"></td><td class="gate yl"></td><td class="gate yl"></td><td class="gate yl"></td><td class="gate or"></td><td class="gate or"></td><td class="gate pk"></td><td class="gate gy"></td><td class="gate gy"></td><td class="gate gy"></td><td class="gate gy"></td><td class="blank num small"></td><td class="blank num small"></td><td class="obs"></td></tr>
+          <tr><td class="rowlabel">2a</td><td class="blank num small"></td><td class="gate"></td><td class="gate pk"></td><td class="gate pk"></td><td class="gate yl"></td><td class="gate yl"></td><td class="gate yl"></td><td class="gate or"></td><td class="gate or"></td><td class="gate pk"></td><td class="gate gy"></td><td class="gate gy"></td><td class="gate gy"></td><td class="gate gy"></td><td class="blank num small"></td><td class="blank num small"></td><td class="obs"></td></tr>
+          <tr><td class="rowlabel">2b</td><td class="blank num small"></td><td class="gate"></td><td class="gate pk"></td><td class="gate pk"></td><td class="gate yl"></td><td class="gate yl"></td><td class="gate yl"></td><td class="gate or"></td><td class="gate or"></td><td class="gate pk"></td><td class="gate gy"></td><td class="gate gy"></td><td class="gate gy"></td><td class="gate gy"></td><td class="blank num small"></td><td class="blank num small"></td><td class="obs"></td></tr>
+          <tr><td class="rowlabel">3</td><td class="blank num small"></td><td class="gate"></td><td class="gate pk"></td><td class="gate pk"></td><td class="gate yl"></td><td class="gate yl"></td><td class="gate yl"></td><td class="gate or"></td><td class="gate or"></td><td class="gate pk"></td><td class="gate gy"></td><td class="gate gy"></td><td class="gate gy"></td><td class="gate gy"></td><td class="blank num small"></td><td class="blank num small"></td><td class="obs"></td></tr>
+          <tr><td class="rowlabel">4</td><td class="blank num small"></td><td class="gate"></td><td class="gate pk"></td><td class="gate pk"></td><td class="gate yl"></td><td class="gate yl"></td><td class="gate yl"></td><td class="gate or"></td><td class="gate or"></td><td class="gate pk"></td><td class="gate gy"></td><td class="gate gy"></td><td class="gate gy"></td><td class="gate gy"></td><td class="blank num small"></td><td class="blank num small"></td><td class="obs"></td></tr>
+          <tr><td class="rowlabel">5</td><td class="blank num small"></td><td class="gate"></td><td class="gate pk"></td><td class="gate pk"></td><td class="gate yl"></td><td class="gate yl"></td><td class="gate yl"></td><td class="gate or"></td><td class="gate or"></td><td class="gate pk"></td><td class="gate gy"></td><td class="gate gy"></td><td class="gate gy"></td><td class="gate gy"></td><td class="blank num small"></td><td class="blank num small"></td><td class="obs"></td></tr>
+          <tr><td class="rowlabel">6</td><td class="blank num small"></td><td class="gate"></td><td class="gate pk"></td><td class="gate pk"></td><td class="gate yl"></td><td class="gate yl"></td><td class="gate yl"></td><td class="gate or"></td><td class="gate or"></td><td class="gate pk"></td><td class="gate gy"></td><td class="gate gy"></td><td class="gate gy"></td><td class="gate gy"></td><td class="blank num small"></td><td class="blank num small"></td><td class="obs"></td></tr>
+          <tr><td class="rowlabel">7</td><td class="blank num small"></td><td class="gate"></td><td class="gate pk"></td><td class="gate pk"></td><td class="gate yl"></td><td class="gate yl"></td><td class="gate yl"></td><td class="gate or"></td><td class="gate or"></td><td class="gate pk"></td><td class="gate gy"></td><td class="gate gy"></td><td class="gate gy"></td><td class="gate gy"></td><td class="blank num small"></td><td class="blank num small"></td><td class="obs"></td></tr>
+          <tr><td class="rowlabel">8</td><td class="blank num small"></td><td class="gate"></td><td class="gate pk"></td><td class="gate pk"></td><td class="gate yl"></td><td class="gate yl"></td><td class="gate yl"></td><td class="gate or"></td><td class="gate or"></td><td class="gate pk"></td><td class="gate gy"></td><td class="gate gy"></td><td class="gate gy"></td><td class="gate gy"></td><td class="blank num small"></td><td class="blank num small"></td><td class="obs"></td></tr>
+          <tr class="totals-row"><td colspan="2">Day</td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td><td>final</td><td>final</td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="legend"><strong>Columns.</strong> <code>Visitors</code> one per arrival · <code>on top</code> = placed on an existing stack ·
+    <code>new</code> = new stack beside its nearest · <code>new-gap</code> = new stack after a hand's gap · <code>beside</code> = orange as a new
+    stack (new letter → a line in §02) · <code>Strokes · own</code> one per stroke in step 6 · <code>Strokes · table</code> one per extra stroke
+    after a table talk · <code>Lifts</code> one per note handed to you (→ a line in §03) · <code>No strokes</code> one per visitor who left
+    without placing any. <strong>Leader</strong> = the letter whose height plus both neighbours' heights (not across a gap) is biggest.</p>
+    <p class="legend"><strong>Saturation check</strong> (mid-afternoon): if day lifts ≈ day strokes ÷ 3, write "board saturated" in
+    Observations; if strokes are high and lifts near zero, "board scattered". Don't change today's rules — note it for next week's header.</p>
+  </section>
+
+  <section class="pagebreak">
+    <p class="sec-eyebrow">02 — Stack Register</p>
+    <h2>Every Field stack, from the moment it is founded</h2>
+    <div class="hint"><p>A line the moment a letter card goes up. "Gap before" = the visitor left a hand's width to the left.
+    Fill height and extinct at close (a stack lifted to nothing keeps its letter and gets a tick).</p></div>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Letter</th><th>Row</th><th>Founded by</th><th>Gap before</th><th class="wide">First wording (top note when founded)</th><th>Height at close</th><th>Extinct</th></tr></thead>
+        <tbody>
+          <tr><td class="rowlabel">A</td><td class="blank num"></td><td class="boxes">&#9633;Y &#9633;O</td><td class="boxes">&#9633;</td><td class="blank wide"></td><td class="blank num"></td><td class="boxes">&#9633;</td></tr>
+          <tr><td class="rowlabel">B</td><td class="blank num"></td><td class="boxes">&#9633;Y &#9633;O</td><td class="boxes">&#9633;</td><td class="blank wide"></td><td class="blank num"></td><td class="boxes">&#9633;</td></tr>
+          <tr><td class="rowlabel">C</td><td class="blank num"></td><td class="boxes">&#9633;Y &#9633;O</td><td class="boxes">&#9633;</td><td class="blank wide"></td><td class="blank num"></td><td class="boxes">&#9633;</td></tr>
+          <tr><td class="rowlabel">D</td><td class="blank num"></td><td class="boxes">&#9633;Y &#9633;O</td><td class="boxes">&#9633;</td><td class="blank wide"></td><td class="blank num"></td><td class="boxes">&#9633;</td></tr>
+          <tr><td class="rowlabel">E</td><td class="blank num"></td><td class="boxes">&#9633;Y &#9633;O</td><td class="boxes">&#9633;</td><td class="blank wide"></td><td class="blank num"></td><td class="boxes">&#9633;</td></tr>
+          <tr><td class="rowlabel">F</td><td class="blank num"></td><td class="boxes">&#9633;Y &#9633;O</td><td class="boxes">&#9633;</td><td class="blank wide"></td><td class="blank num"></td><td class="boxes">&#9633;</td></tr>
+          <tr><td class="rowlabel">G</td><td class="blank num"></td><td class="boxes">&#9633;Y &#9633;O</td><td class="boxes">&#9633;</td><td class="blank wide"></td><td class="blank num"></td><td class="boxes">&#9633;</td></tr>
+          <tr><td class="rowlabel">H</td><td class="blank num"></td><td class="boxes">&#9633;Y &#9633;O</td><td class="boxes">&#9633;</td><td class="blank wide"></td><td class="blank num"></td><td class="boxes">&#9633;</td></tr>
+          <tr><td class="rowlabel">I</td><td class="blank num"></td><td class="boxes">&#9633;Y &#9633;O</td><td class="boxes">&#9633;</td><td class="blank wide"></td><td class="blank num"></td><td class="boxes">&#9633;</td></tr>
+          <tr><td class="rowlabel">J</td><td class="blank num"></td><td class="boxes">&#9633;Y &#9633;O</td><td class="boxes">&#9633;</td><td class="blank wide"></td><td class="blank num"></td><td class="boxes">&#9633;</td></tr>
+          <tr><td class="rowlabel">K</td><td class="blank num"></td><td class="boxes">&#9633;Y &#9633;O</td><td class="boxes">&#9633;</td><td class="blank wide"></td><td class="blank num"></td><td class="boxes">&#9633;</td></tr>
+          <tr><td class="rowlabel">L</td><td class="blank num"></td><td class="boxes">&#9633;Y &#9633;O</td><td class="boxes">&#9633;</td><td class="blank wide"></td><td class="blank num"></td><td class="boxes">&#9633;</td></tr>
+          <tr><td class="rowlabel">M</td><td class="blank num"></td><td class="boxes">&#9633;Y &#9633;O</td><td class="boxes">&#9633;</td><td class="blank wide"></td><td class="blank num"></td><td class="boxes">&#9633;</td></tr>
+          <tr><td class="rowlabel">N</td><td class="blank num"></td><td class="boxes">&#9633;Y &#9633;O</td><td class="boxes">&#9633;</td><td class="blank wide"></td><td class="blank num"></td><td class="boxes">&#9633;</td></tr>
+          <tr><td class="rowlabel">O</td><td class="blank num"></td><td class="boxes">&#9633;Y &#9633;O</td><td class="boxes">&#9633;</td><td class="blank wide"></td><td class="blank num"></td><td class="boxes">&#9633;</td></tr>
+          <tr><td class="rowlabel">P</td><td class="blank num"></td><td class="boxes">&#9633;Y &#9633;O</td><td class="boxes">&#9633;</td><td class="blank wide"></td><td class="blank num"></td><td class="boxes">&#9633;</td></tr>
+          <tr><td class="rowlabel">Q</td><td class="blank num"></td><td class="boxes">&#9633;Y &#9633;O</td><td class="boxes">&#9633;</td><td class="blank wide"></td><td class="blank num"></td><td class="boxes">&#9633;</td></tr>
+          <tr><td class="rowlabel">R</td><td class="blank num"></td><td class="boxes">&#9633;Y &#9633;O</td><td class="boxes">&#9633;</td><td class="blank wide"></td><td class="blank num"></td><td class="boxes">&#9633;</td></tr>
+          <tr><td class="rowlabel">S</td><td class="blank num"></td><td class="boxes">&#9633;Y &#9633;O</td><td class="boxes">&#9633;</td><td class="blank wide"></td><td class="blank num"></td><td class="boxes">&#9633;</td></tr>
+          <tr><td class="rowlabel">T</td><td class="blank num"></td><td class="boxes">&#9633;Y &#9633;O</td><td class="boxes">&#9633;</td><td class="blank wide"></td><td class="blank num"></td><td class="boxes">&#9633;</td></tr>
+          <tr><td class="rowlabel">U</td><td class="blank num"></td><td class="boxes">&#9633;Y &#9633;O</td><td class="boxes">&#9633;</td><td class="blank wide"></td><td class="blank num"></td><td class="boxes">&#9633;</td></tr>
+          <tr><td class="rowlabel">V</td><td class="blank num"></td><td class="boxes">&#9633;Y &#9633;O</td><td class="boxes">&#9633;</td><td class="blank wide"></td><td class="blank num"></td><td class="boxes">&#9633;</td></tr>
+          <tr><td class="rowlabel">W</td><td class="blank num"></td><td class="boxes">&#9633;Y &#9633;O</td><td class="boxes">&#9633;</td><td class="blank wide"></td><td class="blank num"></td><td class="boxes">&#9633;</td></tr>
+          <tr><td class="rowlabel">X</td><td class="blank num"></td><td class="boxes">&#9633;Y &#9633;O</td><td class="boxes">&#9633;</td><td class="blank wide"></td><td class="blank num"></td><td class="boxes">&#9633;</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="pagebreak">
+    <p class="sec-eyebrow">03 — Archive Log</p>
+    <h2>What the crowd took down</h2>
+    <div class="hint"><p>Nothing goes in the box without a line here. The visitor who placed the third stroke hands you the note;
+    check it has three, box it, log it. "Height after" is the number now showing on that stack (0 = extinct — tick §02).</p></div>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Row</th><th>Stack</th><th>Colour</th><th class="wide">What the note said</th><th>Strokes</th><th>Height after</th></tr></thead>
+        <tbody>
+          <tr><td class="blank num"></td><td class="blank num"></td><td class="boxes">&#9633;Y &#9633;O</td><td class="blank wide"></td><td class="boxes">&#9633; &#9633; &#9633;</td><td class="blank num"></td></tr>
+          <tr><td class="blank num"></td><td class="blank num"></td><td class="boxes">&#9633;Y &#9633;O</td><td class="blank wide"></td><td class="boxes">&#9633; &#9633; &#9633;</td><td class="blank num"></td></tr>
+          <tr><td class="blank num"></td><td class="blank num"></td><td class="boxes">&#9633;Y &#9633;O</td><td class="blank wide"></td><td class="boxes">&#9633; &#9633; &#9633;</td><td class="blank num"></td></tr>
+          <tr><td class="blank num"></td><td class="blank num"></td><td class="boxes">&#9633;Y &#9633;O</td><td class="blank wide"></td><td class="boxes">&#9633; &#9633; &#9633;</td><td class="blank num"></td></tr>
+          <tr><td class="blank num"></td><td class="blank num"></td><td class="boxes">&#9633;Y &#9633;O</td><td class="blank wide"></td><td class="boxes">&#9633; &#9633; &#9633;</td><td class="blank num"></td></tr>
+          <tr><td class="blank num"></td><td class="blank num"></td><td class="boxes">&#9633;Y &#9633;O</td><td class="blank wide"></td><td class="boxes">&#9633; &#9633; &#9633;</td><td class="blank num"></td></tr>
+          <tr><td class="blank num"></td><td class="blank num"></td><td class="boxes">&#9633;Y &#9633;O</td><td class="blank wide"></td><td class="boxes">&#9633; &#9633; &#9633;</td><td class="blank num"></td></tr>
+          <tr><td class="blank num"></td><td class="blank num"></td><td class="boxes">&#9633;Y &#9633;O</td><td class="blank wide"></td><td class="boxes">&#9633; &#9633; &#9633;</td><td class="blank num"></td></tr>
+          <tr><td class="blank num"></td><td class="blank num"></td><td class="boxes">&#9633;Y &#9633;O</td><td class="blank wide"></td><td class="boxes">&#9633; &#9633; &#9633;</td><td class="blank num"></td></tr>
+          <tr><td class="blank num"></td><td class="blank num"></td><td class="boxes">&#9633;Y &#9633;O</td><td class="blank wide"></td><td class="boxes">&#9633; &#9633; &#9633;</td><td class="blank num"></td></tr>
+          <tr><td class="blank num"></td><td class="blank num"></td><td class="boxes">&#9633;Y &#9633;O</td><td class="blank wide"></td><td class="boxes">&#9633; &#9633; &#9633;</td><td class="blank num"></td></tr>
+          <tr><td class="blank num"></td><td class="blank num"></td><td class="boxes">&#9633;Y &#9633;O</td><td class="blank wide"></td><td class="boxes">&#9633; &#9633; &#9633;</td><td class="blank num"></td></tr>
+          <tr><td class="blank num"></td><td class="blank num"></td><td class="boxes">&#9633;Y &#9633;O</td><td class="blank wide"></td><td class="boxes">&#9633; &#9633; &#9633;</td><td class="blank num"></td></tr>
+          <tr><td class="blank num"></td><td class="blank num"></td><td class="boxes">&#9633;Y &#9633;O</td><td class="blank wide"></td><td class="boxes">&#9633; &#9633; &#9633;</td><td class="blank num"></td></tr>
+          <tr><td class="blank num"></td><td class="blank num"></td><td class="boxes">&#9633;Y &#9633;O</td><td class="blank wide"></td><td class="boxes">&#9633; &#9633; &#9633;</td><td class="blank num"></td></tr>
+          <tr><td class="blank num"></td><td class="blank num"></td><td class="boxes">&#9633;Y &#9633;O</td><td class="blank wide"></td><td class="boxes">&#9633; &#9633; &#9633;</td><td class="blank num"></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="pagebreak">
+    <p class="sec-eyebrow">04 — Close-out</p>
+    <h2>Reading the answer</h2>
+    <div class="hint"><p>Out loud. For each Field stack in order along the strip: own height, left neighbour's height, right neighbour's
+    height — <strong>0 for a neighbour across a gap or off the end</strong> — and the total. Biggest total wins. Tie: the taller own
+    height; still tied: record both. <strong>Strokes showing</strong> = the tally marks on that stack's top note right now: the census
+    of where trimming started and didn't finish.</p></div>
+    <div class="twocol">
+      <div class="tablewrap">
+        <table style="min-width:0;">
+          <thead><tr><th>Stack</th><th>Own</th><th>Left</th><th>Right</th><th>Total</th><th>Strokes showing</th></tr></thead>
+          <tbody>
+            <tr><td class="rowlabel">A</td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td></tr>
+            <tr><td class="rowlabel">B</td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td></tr>
+            <tr><td class="rowlabel">C</td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td></tr>
+            <tr><td class="rowlabel">D</td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td></tr>
+            <tr><td class="rowlabel">E</td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td></tr>
+            <tr><td class="rowlabel">F</td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td></tr>
+            <tr><td class="rowlabel">G</td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td></tr>
+            <tr><td class="rowlabel">H</td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td></tr>
+            <tr><td class="rowlabel">I</td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td></tr>
+            <tr><td class="rowlabel">J</td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td></tr>
+            <tr><td class="rowlabel">K</td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td></tr>
+            <tr><td class="rowlabel">L</td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="tablewrap">
+        <table style="min-width:0;">
+          <thead><tr><th>Stack</th><th>Own</th><th>Left</th><th>Right</th><th>Total</th><th>Strokes showing</th></tr></thead>
+          <tbody>
+            <tr><td class="rowlabel">M</td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td></tr>
+            <tr><td class="rowlabel">N</td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td></tr>
+            <tr><td class="rowlabel">O</td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td></tr>
+            <tr><td class="rowlabel">P</td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td></tr>
+            <tr><td class="rowlabel">Q</td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td></tr>
+            <tr><td class="rowlabel">R</td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td></tr>
+            <tr><td class="rowlabel">S</td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td></tr>
+            <tr><td class="rowlabel">T</td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td></tr>
+            <tr><td class="rowlabel">U</td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td></tr>
+            <tr><td class="rowlabel">V</td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td></tr>
+            <tr><td class="rowlabel">W</td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td></tr>
+            <tr><td class="rowlabel">X</td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="closeblock" style="margin-top:1.2rem;">
+      <div class="checkline"><span class="checkbox"></span><span>Settled early — the leader was unchanged for a full hour. Row: <span class="fillrule" style="display:inline-block; width:3rem;"></span></span></div>
+      <div class="checkline"><span class="checkbox"></span><span>Ran the full day to close</span></div>
+      <div class="twocol" style="margin-top:1rem;">
+        <div class="field"><label>Winning stack (letter) and total</label><span class="fillrule"></span></div>
+        <div class="field"><label>Runner-up (letter) and total</label><span class="fillrule"></span></div>
+      </div>
+      <div class="field" style="margin-top:0.9rem;"><label>Headline — the winning stack's top note, verbatim</label><span class="fillrule"></span><span class="fillrule" style="margin-top:0.6rem;"></span></div>
+      <div class="field" style="margin-top:0.9rem;"><label>Family — the neighbours' top notes, verbatim</label><span class="fillrule"></span><span class="fillrule" style="margin-top:0.6rem;"></span></div>
+    </div>
+  </section>
+
+  <section>
+    <p class="sec-eyebrow">05 — The Scoreboard</p>
+    <h2>Board vs. capitol</h2>
+    <div class="closeblock">
+      <div class="field"><label>The board's answer</label><span class="fillrule"></span><span class="fillrule" style="margin-top:0.6rem;"></span></div>
+      <div class="field"><label>The capitol's answer (open the envelope only now)</label><span class="fillrule"></span></div>
+      <div class="field"><label>What happened since (fill in later, from the Madison Docket brief)</label><span class="fillrule"></span><span class="fillrule" style="margin-top:0.6rem;"></span></div>
+    </div>
+  </section>
+
+  <div class="signoff">
+    <div class="field"><label>Steward's notes for next Saturday (rule changes to propose, and why)</label><span class="fillrule"></span><span class="fillrule" style="margin-top:0.6rem;"></span><span class="fillrule" style="margin-top:0.6rem;"></span></div>
+    <div class="field"><label>Signed &amp; dated</label><span class="fillrule" style="margin-top:1.4rem;"></span></div>
+  </div>
+
+  <p class="provenance">Companion to <a href="stewards-guide.html">the steward's guide</a> and
+  <a href="field-guide.html">the field guide</a>.</p>
+</div>
+</body>
+</html>
