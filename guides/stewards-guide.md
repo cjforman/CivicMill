@@ -27,7 +27,7 @@ holds about 22 stacks.
  ┌──────────────────────────────────────────────────────────────────────┐
  │  ISSUE CARD                                                          │
  │                                                                      │
- │  WALL OF WHY   [3] [1] [7] [2] [1] [4] [1]   …  ← pink stacks        │
+ │  WALL OF WHY   [3] [1] [7] [2] [1] [4] [1]   …  ← pink/coral stacks  │
  │                                                                      │
  │  THE FIELD     [5] [9] [2] [12][3]     [1] [4]  …   ┌────────┐       │
  │                 A   B   C   D   E   ↑   F   G       │ARCHIVE │       │
@@ -38,8 +38,8 @@ holds about 22 stacks.
       goes up or down.
 ```
 
-- **Upper strip — the Wall of Why.** Pink stacks, any order. No letters.
-- **Lower strip — the Field.** Yellow/orange stacks in one line. A **letter
+- **Upper strip — the Wall of Why.** Pink and coral stacks, any order. No letters.
+- **Lower strip — the Field.** Aqua/lime stacks in one line. A **letter
   card** (A, B, C …) pinned just under each stack. Stacks that are close in
   meaning sit next to each other; a **hand's-width gap** marks "different
   kind of answer." If you run out of room, add a second board *to the right*
@@ -52,7 +52,7 @@ holds about 22 stacks.
 **Checklist:**
 
 - [ ] Both strips clear; letter cards A–Z in a pile, none pinned
-- [ ] Pink, yellow, orange pads; fine-tip markers (numbers have to fit in a corner)
+- [ ] Pink, coral, aqua and lime pads; fine-tip markers (numbers have to fit in a corner)
 - [ ] Timer; hand stamp (one visit per person per Saturday)
 - [ ] Log header filled in: date, steward, issue, the card's exact wording,
   stroke budget (3), lift threshold (3)
@@ -77,25 +77,25 @@ memory at the end of the visit. On the hour, move down a row.
 
 ### 1. Say where it hurts
 
-Read the issue card aloud, word for word. Hand them a pink note.
+Read the issue card aloud, word for word. Hand them a pink or coral note.
 
 > "Before anything else: how does this issue touch *your* life? What does it
-> cost you, or someone you know? One pink note. Don't look at the ideas
+> cost you, or someone you know? One pink or coral note. Don't look at the ideas
 > board yet."
 
 When they've written it:
 
-> "Now look along the pink strip — just the top note of each pile. If one
+> "Now look along the Wall of Why — just the top note of each pile. If one
 > already says your pain, stick yours on top of it and write its number plus
 > one in the corner. If none does, start a new pile with a **1**."
 
 **Watch for:** looking at the lower strip (turn them back — kindly). Forgetting
 the number (remind them; never write it for them).
-**Mark:** one stroke in **Pink · on top** or **Pink · new**.
+**Mark:** one stroke in **Pink/coral · on top** or **Pink/coral · new**.
 
 ### 2. First instinct
 
-Hand them a yellow note. Stand between them and the Field if you have to.
+Hand them an aqua note. Stand between them and the Field if you have to.
 
 > "Now, before you read a single idea from anyone else: what's your gut
 > answer to the question? Half-formed is fine. Obvious is fine. There's no
@@ -126,7 +126,7 @@ gaps.
 
 **Watch for:** editing the note. Putting it on a pile *because it's tall*.
 Letting you decide.
-**Mark:** one stroke in **Yellow · on top**, **Yellow · new**, or **Yellow ·
+**Mark:** one stroke in **Aqua · on top**, **Aqua · new**, or **Aqua ·
 new-gap**. If new: a line in the stack register (log §02) — letter, row,
 first wording, gap-before yes/no.
 
@@ -140,37 +140,37 @@ Start the timer, 75 seconds.
 > on it. You don't need to dig underneath; the numbers carry the history."
 
 **Watch for:** lifting notes to read beneath (allowed, not required — don't
-stop them, don't encourage them). Skipping the pink strip.
+stop them, don't encourage them). Skipping the Wall of Why.
 **Mark:** nothing.
 
 ### 5. Add
 
-> "Two optional things. One orange note: if someone else's idea makes you
+> "Two optional things. One lime note: if someone else's idea makes you
 > think 'almost — but I'd say it like this,' write your version. Put it on
 > top of their pile if it's a rewording, or start a new pile right beside
 > theirs if it's a real variation. Any pile — not just the tall ones. And
-> one more pink note — only for a pain that isn't on the wall yet."
+> one more pink or coral note — only for a pain that isn't on the wall yet."
 
-**Watch for:** an orange note on their own yellow (not allowed — "on someone
-else's idea"). A second pink going on top of an existing pile (not allowed —
+**Watch for:** a lime note on their own aqua (not allowed — "on someone
+else's idea"). A second pink or coral note going on top of an existing pile (not allowed —
 "new piles only; if it's already there, your number's already counted").
-**Mark:** one stroke in **Orange · on top** or **Orange · beside** (beside =
-new letter card + register line); nothing if no orange. One stroke in
-**2nd pink** if placed.
+**Mark:** one stroke in **Lime · on top** or **Lime · beside** (beside =
+new letter card + register line); nothing if no lime. One stroke in
+**2nd pink/coral** if placed.
 
 ### 6. Trim
 
 > "Last step. You have three strokes — tally marks in the bottom corner of a
 > top note in the Field. Put one on an idea that, as it's worded now, would
-> make what's on the pink wall worse. Not on piles you've added to today; no
-> more than two on one note; nothing on pink.
+> make what's on the Wall of Why worse. Not on piles you've added to today; no
+> more than two on one note; nothing on the Wall of Why.
 >
 > Three strokes takes a note off. If yours is the third, lift it and hand it
 > to me. The one underneath becomes the top — you've rejected that wording,
 > not the idea."
 
 **Watch for:** strokes on their own stacks, a third stroke by the same
-person, strokes on pink, strokes on a buried note.
+person, strokes on the Wall of Why, strokes on a buried note.
 **Mark:** one stroke in **Strokes · own** per stroke they place. One in
 **Lifts** per note handed to you, and a line in the archive log (log §03)
 for each — row, stack letter, colour, what it said, height of the stack
@@ -202,15 +202,15 @@ ordinary strokes column — so the table's effect stays measurable.
 | They ask | You say |
 |---|---|
 | "Where does this go?" | "Your call. Beside the one it's most like, or on top of one that says the same thing." |
-| "Can I move that note?" | "No. You can build on it with an orange note, or put a stroke on it. Nothing moves sideways or up." |
+| "Can I move that note?" | "No. You can build on it with a lime note, or put a stroke on it. Nothing moves sideways or up." |
 | "Can I take my own note down?" | "No. Only other people's strokes take a note off." |
 | "Which pile is winning?" | "The numbers are on the notes. At close we add each pile to its neighbours and read it out." |
 | "What's underneath?" | "Earlier wordings. You can lift a corner, but you don't need to — the number tells you how many." |
 | "Is that a good idea?" / "What do you think?" | "I don't get a vote — that's the point of me." |
-| "Can I put a stroke on a pink note?" | "No. The pain is the question, not an answer." |
+| "Can I put a stroke on a pink or coral note?" | "No. The pain is the question, not an answer." |
 | "Two of these piles are the same idea." | "Then they'll stand next to each other, and at close they count together. I don't merge them." |
 | "This pile's in the wrong place." | "You can start a new pile where you think it belongs. I don't move them." |
-| "Can I write more than one idea?" | "One yellow, one orange. If you've got two ideas, the second one is next Saturday's." |
+| "Can I write more than one idea?" | "One aqua, one lime. If you've got two ideas, the second one is next Saturday's." |
 
 ---
 
@@ -262,5 +262,5 @@ Out loud, with anyone who wants to watch:
 - Never file, move, merge, or split a stack.
 - Never write a number or a stroke on any note.
 - Never say which pile is winning before close.
-- Never let a visitor read the Field before their yellow note is written.
+- Never let a visitor read the Field before their aqua note is written.
 - Never reveal the capitol's vote before close — not even a hint.

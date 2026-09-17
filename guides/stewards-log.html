@@ -9,17 +9,17 @@
   :root {
     --paper: #FBF8F1; --paper-raised: #FFFFFF; --ink: #28231B; --ink-soft: #6B6154; --line: #E4DCCC; --line-strong: #C9BEA5;
     --accent: #54788C; --accent-soft: #E3ECF1; --cork: #A87F52; --cork-soft: #F0E6D6;
-    --pinkish: #FBE9EE; --yellowish: #FDF3D3; --orangeish: #FCE8D4; --greyish: #EFEBE3;
+    --pinkish: #FBE9EE; --aquaish: #E2F5F2; --limeish: #F5F8D3; --greyish: #EFEBE3;
   }
   :root:not([data-theme="light"]) { @media (prefers-color-scheme: dark) {
     --paper: #211D17; --paper-raised: #2B261E; --ink: #EFE8DA; --ink-soft: #A99C88; --line: #3D362B; --line-strong: #554936;
     --accent: #7FA5BA; --accent-soft: #2B3841; --cork: #C09A6A; --cork-soft: #362E21;
-    --pinkish: #3A2A2F; --yellowish: #3A3322; --orangeish: #3B2E22; --greyish: #2E2A24;
+    --pinkish: #3A2A2F; --aquaish: #22332F; --limeish: #33351F; --greyish: #2E2A24;
   } }
   :root[data-theme="dark"] {
     --paper: #211D17; --paper-raised: #2B261E; --ink: #EFE8DA; --ink-soft: #A99C88; --line: #3D362B; --line-strong: #554936;
     --accent: #7FA5BA; --accent-soft: #2B3841; --cork: #C09A6A; --cork-soft: #362E21;
-    --pinkish: #3A2A2F; --yellowish: #3A3322; --orangeish: #3B2E22; --greyish: #2E2A24;
+    --pinkish: #3A2A2F; --aquaish: #22332F; --limeish: #33351F; --greyish: #2E2A24;
   }
   * { box-sizing: border-box; }
   body { background: var(--paper); color: var(--ink); font-family: "Public Sans", "Segoe UI", system-ui, sans-serif; font-size: 0.96rem; line-height: 1.5; margin: 0; }
@@ -44,7 +44,7 @@
   th:last-child, td:last-child { border-right: none; }
   tr:last-child td { border-bottom: none; }
   th { font-size: 0.64rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-soft); font-weight: 700; background: var(--paper); white-space: nowrap; }
-  th.pk, td.pk { background: var(--pinkish); } th.yl, td.yl { background: var(--yellowish); } th.or, td.or { background: var(--orangeish); } th.gy, td.gy { background: var(--greyish); }
+  th.pk, td.pk { background: var(--pinkish); } th.aq, td.aq { background: var(--aquaish); } th.lm, td.lm { background: var(--limeish); } th.gy, td.gy { background: var(--greyish); }
   th.grp { text-align: center; border-bottom: 1px solid var(--line-strong); }
   td.blank { height: 1.75rem; }
   td.num { font-family: "IBM Plex Mono", monospace; }
@@ -76,7 +76,7 @@
     body { font-size: 9pt; background: #fff !important; color: #111 !important; }
     .page { padding: 0; max-width: 100%; }
     .hint, .headfields, .tablewrap, .closeblock { background: #fff !important; border-color: #888 !important; }
-    th, td.pk, td.yl, td.or, td.gy { background: #f4f4f4 !important; } .totals-row td { background: #eee !important; }
+    th, td.pk, td.aq, td.lm, td.gy { background: #f4f4f4 !important; } .totals-row td { background: #eee !important; }
     section.pagebreak { break-before: page; }
     a { color: #111; text-decoration: none; }
     table { min-width: 0; } table.gates { min-width: 0; }
@@ -118,10 +118,10 @@
         <thead>
           <tr>
             <th rowspan="2">Row</th><th rowspan="2">Time</th><th rowspan="2">Visitors</th>
-            <th class="grp pk" colspan="2">Pink · step 1</th>
-            <th class="grp yl" colspan="3">Yellow · step 3</th>
-            <th class="grp or" colspan="2">Orange · step 5</th>
-            <th class="grp pk" rowspan="2">2nd pink<br>step 5</th>
+            <th class="grp pk" colspan="2">Pink/coral · step 1</th>
+            <th class="grp aq" colspan="3">Aqua · step 3</th>
+            <th class="grp lm" colspan="2">Lime · step 5</th>
+            <th class="grp pk" rowspan="2">2nd pink/coral<br>step 5</th>
             <th class="grp gy" colspan="2">Strokes · step 6</th>
             <th class="grp gy" rowspan="2">Lifts</th>
             <th class="grp gy" rowspan="2">No<br>strokes</th>
@@ -129,28 +129,28 @@
           </tr>
           <tr>
             <th class="pk">on top</th><th class="pk">new</th>
-            <th class="yl">on top</th><th class="yl">new</th><th class="yl">new-gap</th>
-            <th class="or">on top</th><th class="or">beside</th>
+            <th class="aq">on top</th><th class="aq">new</th><th class="aq">new-gap</th>
+            <th class="lm">on top</th><th class="lm">beside</th>
             <th class="gy">own</th><th class="gy">table</th>
           </tr>
         </thead>
         <tbody>
-          <tr><td class="rowlabel">1a</td><td class="blank num small"></td><td class="gate"></td><td class="gate pk"></td><td class="gate pk"></td><td class="gate yl"></td><td class="gate yl"></td><td class="gate yl"></td><td class="gate or"></td><td class="gate or"></td><td class="gate pk"></td><td class="gate gy"></td><td class="gate gy"></td><td class="gate gy"></td><td class="gate gy"></td><td class="blank num small"></td><td class="blank num small"></td><td class="obs"></td></tr>
-          <tr><td class="rowlabel">1b</td><td class="blank num small"></td><td class="gate"></td><td class="gate pk"></td><td class="gate pk"></td><td class="gate yl"></td><td class="gate yl"></td><td class="gate yl"></td><td class="gate or"></td><td class="gate or"></td><td class="gate pk"></td><td class="gate gy"></td><td class="gate gy"></td><td class="gate gy"></td><td class="gate gy"></td><td class="blank num small"></td><td class="blank num small"></td><td class="obs"></td></tr>
-          <tr><td class="rowlabel">2a</td><td class="blank num small"></td><td class="gate"></td><td class="gate pk"></td><td class="gate pk"></td><td class="gate yl"></td><td class="gate yl"></td><td class="gate yl"></td><td class="gate or"></td><td class="gate or"></td><td class="gate pk"></td><td class="gate gy"></td><td class="gate gy"></td><td class="gate gy"></td><td class="gate gy"></td><td class="blank num small"></td><td class="blank num small"></td><td class="obs"></td></tr>
-          <tr><td class="rowlabel">2b</td><td class="blank num small"></td><td class="gate"></td><td class="gate pk"></td><td class="gate pk"></td><td class="gate yl"></td><td class="gate yl"></td><td class="gate yl"></td><td class="gate or"></td><td class="gate or"></td><td class="gate pk"></td><td class="gate gy"></td><td class="gate gy"></td><td class="gate gy"></td><td class="gate gy"></td><td class="blank num small"></td><td class="blank num small"></td><td class="obs"></td></tr>
-          <tr><td class="rowlabel">3</td><td class="blank num small"></td><td class="gate"></td><td class="gate pk"></td><td class="gate pk"></td><td class="gate yl"></td><td class="gate yl"></td><td class="gate yl"></td><td class="gate or"></td><td class="gate or"></td><td class="gate pk"></td><td class="gate gy"></td><td class="gate gy"></td><td class="gate gy"></td><td class="gate gy"></td><td class="blank num small"></td><td class="blank num small"></td><td class="obs"></td></tr>
-          <tr><td class="rowlabel">4</td><td class="blank num small"></td><td class="gate"></td><td class="gate pk"></td><td class="gate pk"></td><td class="gate yl"></td><td class="gate yl"></td><td class="gate yl"></td><td class="gate or"></td><td class="gate or"></td><td class="gate pk"></td><td class="gate gy"></td><td class="gate gy"></td><td class="gate gy"></td><td class="gate gy"></td><td class="blank num small"></td><td class="blank num small"></td><td class="obs"></td></tr>
-          <tr><td class="rowlabel">5</td><td class="blank num small"></td><td class="gate"></td><td class="gate pk"></td><td class="gate pk"></td><td class="gate yl"></td><td class="gate yl"></td><td class="gate yl"></td><td class="gate or"></td><td class="gate or"></td><td class="gate pk"></td><td class="gate gy"></td><td class="gate gy"></td><td class="gate gy"></td><td class="gate gy"></td><td class="blank num small"></td><td class="blank num small"></td><td class="obs"></td></tr>
-          <tr><td class="rowlabel">6</td><td class="blank num small"></td><td class="gate"></td><td class="gate pk"></td><td class="gate pk"></td><td class="gate yl"></td><td class="gate yl"></td><td class="gate yl"></td><td class="gate or"></td><td class="gate or"></td><td class="gate pk"></td><td class="gate gy"></td><td class="gate gy"></td><td class="gate gy"></td><td class="gate gy"></td><td class="blank num small"></td><td class="blank num small"></td><td class="obs"></td></tr>
-          <tr><td class="rowlabel">7</td><td class="blank num small"></td><td class="gate"></td><td class="gate pk"></td><td class="gate pk"></td><td class="gate yl"></td><td class="gate yl"></td><td class="gate yl"></td><td class="gate or"></td><td class="gate or"></td><td class="gate pk"></td><td class="gate gy"></td><td class="gate gy"></td><td class="gate gy"></td><td class="gate gy"></td><td class="blank num small"></td><td class="blank num small"></td><td class="obs"></td></tr>
-          <tr><td class="rowlabel">8</td><td class="blank num small"></td><td class="gate"></td><td class="gate pk"></td><td class="gate pk"></td><td class="gate yl"></td><td class="gate yl"></td><td class="gate yl"></td><td class="gate or"></td><td class="gate or"></td><td class="gate pk"></td><td class="gate gy"></td><td class="gate gy"></td><td class="gate gy"></td><td class="gate gy"></td><td class="blank num small"></td><td class="blank num small"></td><td class="obs"></td></tr>
+          <tr><td class="rowlabel">1a</td><td class="blank num small"></td><td class="gate"></td><td class="gate pk"></td><td class="gate pk"></td><td class="gate aq"></td><td class="gate aq"></td><td class="gate aq"></td><td class="gate lm"></td><td class="gate lm"></td><td class="gate pk"></td><td class="gate gy"></td><td class="gate gy"></td><td class="gate gy"></td><td class="gate gy"></td><td class="blank num small"></td><td class="blank num small"></td><td class="obs"></td></tr>
+          <tr><td class="rowlabel">1b</td><td class="blank num small"></td><td class="gate"></td><td class="gate pk"></td><td class="gate pk"></td><td class="gate aq"></td><td class="gate aq"></td><td class="gate aq"></td><td class="gate lm"></td><td class="gate lm"></td><td class="gate pk"></td><td class="gate gy"></td><td class="gate gy"></td><td class="gate gy"></td><td class="gate gy"></td><td class="blank num small"></td><td class="blank num small"></td><td class="obs"></td></tr>
+          <tr><td class="rowlabel">2a</td><td class="blank num small"></td><td class="gate"></td><td class="gate pk"></td><td class="gate pk"></td><td class="gate aq"></td><td class="gate aq"></td><td class="gate aq"></td><td class="gate lm"></td><td class="gate lm"></td><td class="gate pk"></td><td class="gate gy"></td><td class="gate gy"></td><td class="gate gy"></td><td class="gate gy"></td><td class="blank num small"></td><td class="blank num small"></td><td class="obs"></td></tr>
+          <tr><td class="rowlabel">2b</td><td class="blank num small"></td><td class="gate"></td><td class="gate pk"></td><td class="gate pk"></td><td class="gate aq"></td><td class="gate aq"></td><td class="gate aq"></td><td class="gate lm"></td><td class="gate lm"></td><td class="gate pk"></td><td class="gate gy"></td><td class="gate gy"></td><td class="gate gy"></td><td class="gate gy"></td><td class="blank num small"></td><td class="blank num small"></td><td class="obs"></td></tr>
+          <tr><td class="rowlabel">3</td><td class="blank num small"></td><td class="gate"></td><td class="gate pk"></td><td class="gate pk"></td><td class="gate aq"></td><td class="gate aq"></td><td class="gate aq"></td><td class="gate lm"></td><td class="gate lm"></td><td class="gate pk"></td><td class="gate gy"></td><td class="gate gy"></td><td class="gate gy"></td><td class="gate gy"></td><td class="blank num small"></td><td class="blank num small"></td><td class="obs"></td></tr>
+          <tr><td class="rowlabel">4</td><td class="blank num small"></td><td class="gate"></td><td class="gate pk"></td><td class="gate pk"></td><td class="gate aq"></td><td class="gate aq"></td><td class="gate aq"></td><td class="gate lm"></td><td class="gate lm"></td><td class="gate pk"></td><td class="gate gy"></td><td class="gate gy"></td><td class="gate gy"></td><td class="gate gy"></td><td class="blank num small"></td><td class="blank num small"></td><td class="obs"></td></tr>
+          <tr><td class="rowlabel">5</td><td class="blank num small"></td><td class="gate"></td><td class="gate pk"></td><td class="gate pk"></td><td class="gate aq"></td><td class="gate aq"></td><td class="gate aq"></td><td class="gate lm"></td><td class="gate lm"></td><td class="gate pk"></td><td class="gate gy"></td><td class="gate gy"></td><td class="gate gy"></td><td class="gate gy"></td><td class="blank num small"></td><td class="blank num small"></td><td class="obs"></td></tr>
+          <tr><td class="rowlabel">6</td><td class="blank num small"></td><td class="gate"></td><td class="gate pk"></td><td class="gate pk"></td><td class="gate aq"></td><td class="gate aq"></td><td class="gate aq"></td><td class="gate lm"></td><td class="gate lm"></td><td class="gate pk"></td><td class="gate gy"></td><td class="gate gy"></td><td class="gate gy"></td><td class="gate gy"></td><td class="blank num small"></td><td class="blank num small"></td><td class="obs"></td></tr>
+          <tr><td class="rowlabel">7</td><td class="blank num small"></td><td class="gate"></td><td class="gate pk"></td><td class="gate pk"></td><td class="gate aq"></td><td class="gate aq"></td><td class="gate aq"></td><td class="gate lm"></td><td class="gate lm"></td><td class="gate pk"></td><td class="gate gy"></td><td class="gate gy"></td><td class="gate gy"></td><td class="gate gy"></td><td class="blank num small"></td><td class="blank num small"></td><td class="obs"></td></tr>
+          <tr><td class="rowlabel">8</td><td class="blank num small"></td><td class="gate"></td><td class="gate pk"></td><td class="gate pk"></td><td class="gate aq"></td><td class="gate aq"></td><td class="gate aq"></td><td class="gate lm"></td><td class="gate lm"></td><td class="gate pk"></td><td class="gate gy"></td><td class="gate gy"></td><td class="gate gy"></td><td class="gate gy"></td><td class="blank num small"></td><td class="blank num small"></td><td class="obs"></td></tr>
           <tr class="totals-row"><td colspan="2">Day</td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td><td class="blank num"></td><td>final</td><td>final</td><td></td></tr>
         </tbody>
       </table>
     </div>
     <p class="legend"><strong>Columns.</strong> <code>Visitors</code> one per arrival · <code>on top</code> = placed on an existing stack ·
-    <code>new</code> = new stack beside its nearest · <code>new-gap</code> = new stack after a hand's gap · <code>beside</code> = orange as a new
+    <code>new</code> = new stack beside its nearest · <code>new-gap</code> = new stack after a hand's gap · <code>beside</code> = lime as a new
     stack (new letter → a line in §02) · <code>Strokes · own</code> one per stroke in step 6 · <code>Strokes · table</code> one per extra stroke
     after a table talk · <code>Lifts</code> one per note handed to you (→ a line in §03) · <code>No strokes</code> one per visitor who left
     without placing any. <strong>Leader</strong> = the letter whose height plus both neighbours' heights (not across a gap) is biggest.</p>

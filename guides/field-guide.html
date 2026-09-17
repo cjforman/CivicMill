@@ -8,21 +8,21 @@
 <style>
   :root {
     --paper: #FBF8F1; --paper-raised: #FFFFFF; --ink: #28231B; --ink-soft: #6B6154; --line: #E4DCCC;
-    --note-yellow: #F5CE52; --note-yellow-edge: #D9AF2B; --note-pink: #EFA8BA; --note-pink-edge: #D57D95;
-    --note-orange: #F0A45B; --note-orange-edge: #CD7F2F; --ink-on-orange: #3F2508; --water: #54788C;
-    --water-soft: #E3ECF1; --cork: #A87F52; --ink-on-note: #3A3012; --ink-on-pink: #4A2530;
+    --note-aqua: #7ED3C6; --note-aqua-edge: #4FA89A; --note-pink: #F98AB4; --note-pink-edge: #D9658F; --note-coral: #EF7A6C; --note-coral-edge: #C9574A;
+    --note-lime: #D7E33E; --note-lime-edge: #AEB91F; --ink-on-lime: #333A08; --water: #54788C;
+    --water-soft: #E3ECF1; --cork: #A87F52; --ink-on-note: #173A35; --ink-on-pink: #4A2530;
   }
   :root:not([data-theme="light"]) { @media (prefers-color-scheme: dark) {
     --paper: #211D17; --paper-raised: #2B261E; --ink: #EFE8DA; --ink-soft: #A99C88; --line: #3D362B;
-    --note-yellow: #E8C24A; --note-yellow-edge: #B18F1F; --note-pink: #D98BA0; --note-pink-edge: #A85870;
-    --note-orange: #DE9550; --note-orange-edge: #A96A24; --ink-on-orange: #351E06; --water: #7FA5BA;
-    --water-soft: #2B3841; --cork: #B08D62; --ink-on-note: #33290D; --ink-on-pink: #401E29;
+    --note-aqua: #6BB5AA; --note-aqua-edge: #3F8479; --note-pink: #D9789C; --note-pink-edge: #A8506F; --note-coral: #D06A5E; --note-coral-edge: #9E4538;
+    --note-lime: #B8C236; --note-lime-edge: #8A9216; --ink-on-lime: #2B3106; --water: #7FA5BA;
+    --water-soft: #2B3841; --cork: #B08D62; --ink-on-note: #10302B; --ink-on-pink: #401E29;
   } }
   :root[data-theme="dark"] {
     --paper: #211D17; --paper-raised: #2B261E; --ink: #EFE8DA; --ink-soft: #A99C88; --line: #3D362B;
-    --note-yellow: #E8C24A; --note-yellow-edge: #B18F1F; --note-pink: #D98BA0; --note-pink-edge: #A85870;
-    --note-orange: #DE9550; --note-orange-edge: #A96A24; --ink-on-orange: #351E06; --water: #7FA5BA;
-    --water-soft: #2B3841; --cork: #B08D62; --ink-on-note: #33290D; --ink-on-pink: #401E29;
+    --note-aqua: #6BB5AA; --note-aqua-edge: #3F8479; --note-pink: #D9789C; --note-pink-edge: #A8506F; --note-coral: #D06A5E; --note-coral-edge: #9E4538;
+    --note-lime: #B8C236; --note-lime-edge: #8A9216; --ink-on-lime: #2B3106; --water: #7FA5BA;
+    --water-soft: #2B3841; --cork: #B08D62; --ink-on-note: #10302B; --ink-on-pink: #401E29;
   }
   body { background: var(--paper); color: var(--ink); font-family: "Public Sans", "Segoe UI", system-ui, sans-serif; font-size: 1.0625rem; line-height: 1.65; margin: 0; }
   .page { max-width: 46rem; margin: 0 auto; padding: 3.5rem 1.5rem 5rem; }
@@ -36,9 +36,10 @@
   .lede { font-size: 1.125rem; }
   hr { border: 0; border-top: 1px solid var(--line); margin: 2.6rem 0; }
   .chip { display: inline-block; padding: 0.05rem 0.5rem 0.13rem; border-radius: 2px; font-weight: 600; font-size: 0.92em; white-space: nowrap; }
-  .chip.yellow { background: var(--note-yellow); color: var(--ink-on-note); box-shadow: 0 1px 0 var(--note-yellow-edge); }
+  .chip.aqua { background: var(--note-aqua); color: var(--ink-on-note); box-shadow: 0 1px 0 var(--note-aqua-edge); }
   .chip.pink { background: var(--note-pink); color: var(--ink-on-pink); box-shadow: 0 1px 0 var(--note-pink-edge); }
-  .chip.orange { background: var(--note-orange); color: var(--ink-on-orange); box-shadow: 0 1px 0 var(--note-orange-edge); }
+  .chip.coral { background: var(--note-coral); color: var(--ink-on-pink); box-shadow: 0 1px 0 var(--note-coral-edge); }
+  .chip.lime { background: var(--note-lime); color: var(--ink-on-lime); box-shadow: 0 1px 0 var(--note-lime-edge); }
   figure { margin: 2rem 0; }
   figure svg { display: block; width: 100%; height: auto; }
   figcaption { font-size: 0.85rem; color: var(--ink-soft); margin-top: 0.6rem; text-align: center; }
@@ -93,18 +94,18 @@
 
       <rect x="28" y="84" width="704" height="92" rx="4" fill="none" stroke="var(--line)" stroke-width="1.5"/>
       <text x="40" y="104" font-family="'Public Sans',sans-serif" font-size="12.5" font-weight="700" letter-spacing="1.5" fill="var(--ink-soft)">WALL OF WHY</text>
-      <text x="40" y="121" font-family="'IBM Plex Mono',monospace" font-size="9.5" fill="var(--ink-soft)">pink · one stack per pain</text>
+      <text x="40" y="121" font-family="'IBM Plex Mono',monospace" font-size="9.5" fill="var(--ink-soft)">pink &amp; coral · per pain</text>
       <text x="40" y="134" font-family="'IBM Plex Mono',monospace" font-size="9.5" fill="var(--ink-soft)">number = how many share it</text>
       <text x="40" y="147" font-family="'IBM Plex Mono',monospace" font-size="9.5" fill="var(--ink-soft)">never taken down</text>
       <g font-family="'IBM Plex Mono',monospace" font-size="10" font-weight="500" fill="var(--ink-on-pink)">
         <g transform="translate(190 112)"><rect x="5" y="5" width="44" height="40" fill="var(--note-pink)" stroke="var(--note-pink-edge)" stroke-width="0.8"/><rect x="2.5" y="2.5" width="44" height="40" fill="var(--note-pink)" stroke="var(--note-pink-edge)" stroke-width="0.8"/><rect width="44" height="40" fill="var(--note-pink)" stroke="var(--note-pink-edge)" stroke-width="0.8"/><text x="40" y="12" text-anchor="end">3</text></g>
-        <g transform="translate(252 112)"><rect width="44" height="40" fill="var(--note-pink)" stroke="var(--note-pink-edge)" stroke-width="0.8"/><text x="40" y="12" text-anchor="end">1</text></g>
+        <g transform="translate(252 112)"><rect width="44" height="40" fill="var(--note-coral)" stroke="var(--note-coral-edge)" stroke-width="0.8"/><text x="40" y="12" text-anchor="end">1</text></g>
         <g transform="translate(314 112)"><rect x="5" y="5" width="44" height="40" fill="var(--note-pink)" stroke="var(--note-pink-edge)" stroke-width="0.8"/><rect x="2.5" y="2.5" width="44" height="40" fill="var(--note-pink)" stroke="var(--note-pink-edge)" stroke-width="0.8"/><rect width="44" height="40" fill="var(--note-pink)" stroke="var(--note-pink-edge)" stroke-width="0.8"/><text x="40" y="12" text-anchor="end">7</text></g>
         <g transform="translate(376 112)"><rect x="2.5" y="2.5" width="44" height="40" fill="var(--note-pink)" stroke="var(--note-pink-edge)" stroke-width="0.8"/><rect width="44" height="40" fill="var(--note-pink)" stroke="var(--note-pink-edge)" stroke-width="0.8"/><text x="40" y="12" text-anchor="end">2</text></g>
-        <g transform="translate(438 112)"><rect width="44" height="40" fill="var(--note-pink)" stroke="var(--note-pink-edge)" stroke-width="0.8"/><text x="40" y="12" text-anchor="end">1</text></g>
+        <g transform="translate(438 112)"><rect width="44" height="40" fill="var(--note-coral)" stroke="var(--note-coral-edge)" stroke-width="0.8"/><text x="40" y="12" text-anchor="end">1</text></g>
         <g transform="translate(500 112)"><rect x="5" y="5" width="44" height="40" fill="var(--note-pink)" stroke="var(--note-pink-edge)" stroke-width="0.8"/><rect x="2.5" y="2.5" width="44" height="40" fill="var(--note-pink)" stroke="var(--note-pink-edge)" stroke-width="0.8"/><rect width="44" height="40" fill="var(--note-pink)" stroke="var(--note-pink-edge)" stroke-width="0.8"/><text x="40" y="12" text-anchor="end">4</text></g>
         <g transform="translate(562 112)"><rect width="44" height="40" fill="var(--note-pink)" stroke="var(--note-pink-edge)" stroke-width="0.8"/><text x="40" y="12" text-anchor="end">1</text></g>
-        <g transform="translate(624 112)"><rect x="2.5" y="2.5" width="44" height="40" fill="var(--note-pink)" stroke="var(--note-pink-edge)" stroke-width="0.8"/><rect width="44" height="40" fill="var(--note-pink)" stroke="var(--note-pink-edge)" stroke-width="0.8"/><text x="40" y="12" text-anchor="end">2</text></g>
+        <g transform="translate(624 112)"><rect x="2.5" y="2.5" width="44" height="40" fill="var(--note-coral)" stroke="var(--note-coral-edge)" stroke-width="0.8"/><rect width="44" height="40" fill="var(--note-coral)" stroke="var(--note-coral-edge)" stroke-width="0.8"/><text x="40" y="12" text-anchor="end">2</text></g>
       </g>
 
       <rect x="28" y="192" width="604" height="126" rx="4" fill="none" stroke="var(--line)" stroke-width="1.5"/>
@@ -114,15 +115,15 @@
       <text x="40" y="255" font-family="'IBM Plex Mono',monospace" font-size="9.5" fill="var(--ink-soft)">number = how much is built on it</text>
       <text x="40" y="268" font-family="'IBM Plex Mono',monospace" font-size="9.5" fill="var(--ink-soft)">neighbours = similar ideas</text>
       <g font-family="'IBM Plex Mono',monospace" font-size="10" font-weight="500">
-        <g transform="translate(190 222)"><rect x="5" y="5" width="44" height="40" fill="var(--note-yellow)" stroke="var(--note-yellow-edge)" stroke-width="0.8"/><rect x="2.5" y="2.5" width="44" height="40" fill="var(--note-orange)" stroke="var(--note-orange-edge)" stroke-width="0.8"/><rect width="44" height="40" fill="var(--note-yellow)" stroke="var(--note-yellow-edge)" stroke-width="0.8"/><text x="40" y="12" text-anchor="end" fill="var(--ink-on-note)">5</text></g>
-        <g transform="translate(250 222)"><rect x="5" y="5" width="44" height="40" fill="var(--note-yellow)" stroke="var(--note-yellow-edge)" stroke-width="0.8"/><rect x="2.5" y="2.5" width="44" height="40" fill="var(--note-yellow)" stroke="var(--note-yellow-edge)" stroke-width="0.8"/><rect width="44" height="40" fill="var(--note-orange)" stroke="var(--note-orange-edge)" stroke-width="0.8"/><text x="40" y="12" text-anchor="end" fill="var(--ink-on-orange)">9</text></g>
-        <g transform="translate(310 222)"><rect x="2.5" y="2.5" width="44" height="40" fill="var(--note-yellow)" stroke="var(--note-yellow-edge)" stroke-width="0.8"/><rect width="44" height="40" fill="var(--note-yellow)" stroke="var(--note-yellow-edge)" stroke-width="0.8"/><text x="40" y="12" text-anchor="end" fill="var(--ink-on-note)">2</text><text x="40" y="36" text-anchor="end" fill="var(--ink-on-note)">||</text></g>
-        <g transform="translate(370 222)"><rect x="5" y="5" width="44" height="40" fill="var(--note-yellow)" stroke="var(--note-yellow-edge)" stroke-width="0.8"/><rect x="2.5" y="2.5" width="44" height="40" fill="var(--note-orange)" stroke="var(--note-orange-edge)" stroke-width="0.8"/><rect width="44" height="40" fill="var(--note-orange)" stroke="var(--note-orange-edge)" stroke-width="0.8"/><text x="40" y="12" text-anchor="end" fill="var(--ink-on-orange)">12</text></g>
-        <g transform="translate(430 222)"><rect x="2.5" y="2.5" width="44" height="40" fill="var(--note-orange)" stroke="var(--note-orange-edge)" stroke-width="0.8"/><rect width="44" height="40" fill="var(--note-yellow)" stroke="var(--note-yellow-edge)" stroke-width="0.8"/><text x="40" y="12" text-anchor="end" fill="var(--ink-on-note)">3</text></g>
+        <g transform="translate(190 222)"><rect x="5" y="5" width="44" height="40" fill="var(--note-aqua)" stroke="var(--note-aqua-edge)" stroke-width="0.8"/><rect x="2.5" y="2.5" width="44" height="40" fill="var(--note-lime)" stroke="var(--note-lime-edge)" stroke-width="0.8"/><rect width="44" height="40" fill="var(--note-aqua)" stroke="var(--note-aqua-edge)" stroke-width="0.8"/><text x="40" y="12" text-anchor="end" fill="var(--ink-on-note)">5</text></g>
+        <g transform="translate(250 222)"><rect x="5" y="5" width="44" height="40" fill="var(--note-aqua)" stroke="var(--note-aqua-edge)" stroke-width="0.8"/><rect x="2.5" y="2.5" width="44" height="40" fill="var(--note-aqua)" stroke="var(--note-aqua-edge)" stroke-width="0.8"/><rect width="44" height="40" fill="var(--note-lime)" stroke="var(--note-lime-edge)" stroke-width="0.8"/><text x="40" y="12" text-anchor="end" fill="var(--ink-on-lime)">9</text></g>
+        <g transform="translate(310 222)"><rect x="2.5" y="2.5" width="44" height="40" fill="var(--note-aqua)" stroke="var(--note-aqua-edge)" stroke-width="0.8"/><rect width="44" height="40" fill="var(--note-aqua)" stroke="var(--note-aqua-edge)" stroke-width="0.8"/><text x="40" y="12" text-anchor="end" fill="var(--ink-on-note)">2</text><text x="40" y="36" text-anchor="end" fill="var(--ink-on-note)">||</text></g>
+        <g transform="translate(370 222)"><rect x="5" y="5" width="44" height="40" fill="var(--note-aqua)" stroke="var(--note-aqua-edge)" stroke-width="0.8"/><rect x="2.5" y="2.5" width="44" height="40" fill="var(--note-lime)" stroke="var(--note-lime-edge)" stroke-width="0.8"/><rect width="44" height="40" fill="var(--note-lime)" stroke="var(--note-lime-edge)" stroke-width="0.8"/><text x="40" y="12" text-anchor="end" fill="var(--ink-on-lime)">12</text></g>
+        <g transform="translate(430 222)"><rect x="2.5" y="2.5" width="44" height="40" fill="var(--note-lime)" stroke="var(--note-lime-edge)" stroke-width="0.8"/><rect width="44" height="40" fill="var(--note-aqua)" stroke="var(--note-aqua-edge)" stroke-width="0.8"/><text x="40" y="12" text-anchor="end" fill="var(--ink-on-note)">3</text></g>
         <line x1="497" y1="222" x2="497" y2="262" stroke="var(--cork)" stroke-width="1.2" stroke-dasharray="4 3"/>
         <text x="497" y="276" text-anchor="middle" font-size="9" fill="var(--cork)">gap</text>
-        <g transform="translate(520 222)"><rect width="44" height="40" fill="var(--note-yellow)" stroke="var(--note-yellow-edge)" stroke-width="0.8"/><text x="40" y="12" text-anchor="end" fill="var(--ink-on-note)">1</text><text x="40" y="36" text-anchor="end" fill="var(--ink-on-note)">|</text></g>
-        <g transform="translate(580 222)"><rect x="2.5" y="2.5" width="44" height="40" fill="var(--note-yellow)" stroke="var(--note-yellow-edge)" stroke-width="0.8"/><rect width="44" height="40" fill="var(--note-orange)" stroke="var(--note-orange-edge)" stroke-width="0.8"/><text x="40" y="12" text-anchor="end" fill="var(--ink-on-orange)">4</text></g>
+        <g transform="translate(520 222)"><rect width="44" height="40" fill="var(--note-aqua)" stroke="var(--note-aqua-edge)" stroke-width="0.8"/><text x="40" y="12" text-anchor="end" fill="var(--ink-on-note)">1</text><text x="40" y="36" text-anchor="end" fill="var(--ink-on-note)">|</text></g>
+        <g transform="translate(580 222)"><rect x="2.5" y="2.5" width="44" height="40" fill="var(--note-aqua)" stroke="var(--note-aqua-edge)" stroke-width="0.8"/><rect width="44" height="40" fill="var(--note-lime)" stroke="var(--note-lime-edge)" stroke-width="0.8"/><text x="40" y="12" text-anchor="end" fill="var(--ink-on-lime)">4</text></g>
       </g>
       <g font-family="'IBM Plex Mono',monospace" font-size="9.5" fill="var(--ink-soft)" text-anchor="middle">
         <g><rect x="202" y="276" width="20" height="15" rx="2" fill="var(--paper-raised)" stroke="var(--line)"/><text x="212" y="287">A</text></g>
@@ -139,7 +140,7 @@
       <text x="689" y="212" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="12.5" font-weight="700" letter-spacing="1.5" fill="var(--ink-soft)">ARCHIVE</text>
       <rect x="660" y="248" width="58" height="44" fill="none" stroke="var(--cork)" stroke-width="2.5"/>
       <path d="M 660 248 L 668 234 L 726 234 L 718 248" fill="none" stroke="var(--cork)" stroke-width="2.5" stroke-linejoin="round"/>
-      <rect x="670" y="262" width="36" height="26" fill="var(--note-yellow)" opacity="0.5" transform="rotate(-6 688 275)"/>
+      <rect x="670" y="262" width="36" height="26" fill="var(--note-aqua)" opacity="0.5" transform="rotate(-6 688 275)"/>
       <text x="689" y="308" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="9.5" fill="var(--ink-soft)">+ logbook</text>
 
       <text x="380" y="366" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="12" fill="var(--ink-soft)">top note = current wording · number = height of the stack · | = a stroke · letter = the stack's name · gap = a different kind of answer</text>
@@ -153,10 +154,10 @@
   it grows. The number in the top corner of each top note says how tall the stack is underneath it.</p>
 
   <ul class="zones">
-    <li><span class="zname">The Wall of Why</span> — <span class="chip pink">pink stacks</span>, upper strip — where it hurts.
+    <li><span class="zname">The Wall of Why</span> — <span class="chip pink">pink</span> &amp; <span class="chip coral">coral stacks</span>, upper strip — where it hurts.
       Every visitor's personal stake in the issue lives here. One stack per distinct pain; the number on top is how many
-      people have said it. This is the problem, told by the people who have it. Nothing pink is ever taken down.</li>
-    <li><span class="zname">The Field</span> — <span class="chip yellow">yellow</span> &amp; <span class="chip orange">orange stacks</span>, lower strip — the ideas.
+      people have said it. This is the problem, told by the people who have it. Nothing on it is ever taken down.</li>
+    <li><span class="zname">The Field</span> — <span class="chip aqua">aqua</span> &amp; <span class="chip lime">lime stacks</span>, lower strip — the ideas.
       One stack per idea; the top note is the idea's current wording, and the number on top is how much the crowd has built
       on it. Stacks that are close in meaning sit <strong>next to each other</strong>; a <strong>hand's-width gap</strong>
       between stacks means "these are different kinds of answer, not versions of one." Position along the strip carries
@@ -180,7 +181,7 @@
     </ul>
   </div>
 
-  <p><strong>Materials:</strong> pink, yellow and orange sticky notes; fine-tip markers; a timer; the steward's logbook;
+  <p><strong>Materials:</strong> pink, coral, aqua and lime sticky notes; fine-tip markers; a timer; the steward's logbook;
   small letter cards (A, B, C …) to label stacks; a hand stamp; and the issue card — one paragraph stating this week's
   question neutrally, with no options listed.</p>
 
@@ -192,11 +193,11 @@
 
   <div class="step">
     <div class="stepnum">1</div>
-    <h3>Say where it hurts <span class="stime">pink · ~45 s</span></h3>
+    <h3>Say where it hurts <span class="stime">pink or coral · ~45 s</span></h3>
     <div>
-      <p>The steward reads the issue card aloud. You write one pink note: how does this issue touch your life? What
+      <p>The steward reads the issue card aloud. You write one pink or coral note: how does this issue touch your life? What
       does it cost you, or someone you know?</p>
-      <p>Then look at the Wall of Why — the top note of each pink stack. If one already says your pain, put yours
+      <p>Then look at the Wall of Why — the top note of each stack on the wall. If one already says your pain, put yours
       <strong>on top of it</strong> and write the stack's number plus one in the corner. If none does, start a new stack
       and write <strong>1</strong>.</p>
       <p><em>Don't look at the Field yet.</em></p>
@@ -205,7 +206,7 @@
 
   <div class="step">
     <div class="stepnum">2</div>
-    <h3>First instinct <span class="stime">yellow · ~60 s</span></h3>
+    <h3>First instinct <span class="stime">aqua · ~60 s</span></h3>
     <div>
       <p>Before you've read a single idea from anyone else, write your gut answer to the question. Half-formed is fine.
       Obvious is fine. There is no wrong answer at this step — a "bad" idea still teaches the board something, and the
@@ -219,7 +220,7 @@
     <div>
       <p>Now look at the Field for the first time — but your note is already finished. <strong>Post it exactly as
       written: no edits, no rewrites, not a word</strong>, even if you spot a note you like better than your own. Every
-      yellow note on the board is a first instinct; that is the point.</p>
+      aqua note on the board is a first instinct; that is the point.</p>
       <p>Where it goes is a filing question, not a debate, and it is <em>yours</em> to answer:</p>
       <ul>
         <li>If a stack's top note says what yours says, put yours <strong>on top of it</strong> and write the stack's
@@ -244,17 +245,17 @@
 
   <div class="step">
     <div class="stepnum">5</div>
-    <h3>Add <span class="stime">orange &amp; pink · ~60 s · both optional</span></h3>
+    <h3>Add <span class="stime">lime, pink or coral · ~60 s · both optional</span></h3>
     <div>
       <p>Two things you <em>may</em> add, one of each:</p>
       <ul>
-        <li><strong>One orange note.</strong> If someone else's idea makes you think "almost — but I'd say it like this,"
+        <li><strong>One lime note.</strong> If someone else's idea makes you think "almost — but I'd say it like this,"
           write your version. Then either put it <strong>on top of their stack</strong> (a rewording or refinement — the
           stack's number plus one), or, if it is a real variation, start a <strong>new stack right beside theirs</strong>
           (number 1). Any stack is fair game, not just the tall ones. Judge with the Wall of Why: is your version better
           for pains that aren't yours?</li>
-        <li><strong>One more pink note</strong> — but only for a pain that is <strong>not on the wall yet</strong>. It
-          starts a new pink stack at 1. If your pain is already up there, it has your number in step 1 and that is enough.</li>
+        <li><strong>One more pink or coral note</strong> — but only for a pain that is <strong>not on the wall yet</strong>. It
+          starts a new stack on the wall at 1. If your pain is already up there, it has your number in step 1 and that is enough.</li>
       </ul>
     </div>
   </div>
@@ -266,12 +267,12 @@
       <p>You have <strong>three strokes</strong>. A stroke is a tally mark in the bottom corner of a <strong>top note in
       the Field</strong> — the note you can see, never one underneath. Put a stroke on a note if that idea, as currently
       worded, would make what is written on the Wall of Why worse.</p>
-      <p>Limits: no strokes on a stack you have added to today; no more than two strokes on one note; pink never gets
+      <p>Limits: no strokes on a stack you have added to today; no more than two strokes on one note; the Wall of Why never gets
       strokes.</p>
       <p><strong>Three strokes and it comes off.</strong> If your stroke is the third, lift the note and hand it to the
       steward for the Archive. The note underneath is now the top: taking a note off rejects <em>that wording</em>, not
       the idea. An idea is gone only when its stack is empty.</p>
-      <p>Judge with the pink wall, not just your own taste. The question for every stroke is: <em>would this idea
+      <p>Judge with the Wall of Why, not just your own taste. The question for every stroke is: <em>would this idea
       actually add to what's written on the Wall of Why — including the pains that aren't mine?</em></p>
     </div>
   </div>
@@ -295,8 +296,8 @@
     <li><strong>Slides stacks along the strip to make room</strong> — keeping their order, and keeping the gaps. Never
       reorders them, never merges two stacks, never splits one, never moves a note from one stack to another.</li>
     <li>Takes lifted notes into the Archive and writes the log line.</li>
-    <li>Once an hour, fills in the logbook tally: new yellow notes, new orange notes (on-top and beside, separately),
-      new pink stacks, strokes placed, notes lifted, number of stacks, and the leading neighbourhood.</li>
+    <li>Once an hour, fills in the logbook tally: new aqua notes, new lime notes (on-top and beside, separately),
+      new stacks on the Wall of Why, strokes placed, notes lifted, number of stacks, and the leading neighbourhood.</li>
   </ul>
 
   <hr>
@@ -329,8 +330,7 @@
     <li><strong>Instinct before reading</strong> keeps each idea independent. If people read first, the board stops
       hearing a hundred minds and starts hearing its own echo. It is also the only way a <em>genuinely different
       kind</em> of answer ever gets onto the board: nobody reaches it by rewording what's already there.</li>
-    <li><strong>Pain before ideas</strong> because nobody can judge solutions to a problem they haven't heard. The pink
-      wall is the problem statement, written by the people who own it — and the reason a visitor can trim an idea for a
+    <li><strong>Pain before ideas</strong> because nobody can judge solutions to a problem they haven't heard. The Wall of Why is the problem statement, written by the people who own it — and the reason a visitor can trim an idea for a
       harm they will never personally feel.</li>
     <li><strong>On top, never at the bottom</strong> because an idea's standing should be the amount the crowd has built
       on it, and nothing else. There is no climbing and no voting. To lift an idea you have to <em>add</em> to it.</li>

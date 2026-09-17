@@ -64,8 +64,8 @@ held 24 stacks of post it notes:
 
 After hearing the brief, visitors write down one issue they might experience as individuals in relation to the brief. 
 They are also asked to provide a knee-jerk, off-the-top-of-their-head solution to the question. 
-The pain points they express are entered into our ledger on the top row using pink post-it notes—we call this top row the "Wall of Why"—and 
-initial guessed solutions go on the bottom row, in blue post-it notes.
+The pain points they express are entered into our ledger on the top row using pink and coral post-it notes—we call this top row the "Wall of Why"—and 
+initial guessed solutions go on the bottom row, in aqua and lime post-it notes.
 
 The decision maker is then asked to place their ideas in the right place on the board. 
 
