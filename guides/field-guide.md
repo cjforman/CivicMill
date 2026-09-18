@@ -2,7 +2,7 @@
 
 *Can a market crowd out-think the capitol?*
 
-Every Saturday we put up a board at the farmers market and ask one real
+Every Saturday we put up a board at the farmers' market and ask one real
 question — an issue the capitol has already debated and voted on, though we
 don't say which way the vote went. Over the day, one visitor at a time spends
 about five minutes at the board. Nobody runs the discussion. Nobody is in
